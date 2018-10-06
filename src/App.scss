@@ -1,0 +1,507 @@
+@import url('https://fonts.googleapis.com/css?family=Dosis');
+
+$server_path: "http://localhost/web/recursos/";
+
+body { 
+    font-family: 'Dosis', sans-serif;
+}
+
+$color-uno: rgba(114,39,137, 1);
+$color-dos: rgba(237,15,104, 1);
+
+@mixin img-slider {
+    width: 100%;
+    height: 100vh;
+    background: {
+        position: center;
+        size: cover;
+        repeat: no-repeat;
+    }
+}
+
+//.95 .8
+@mixin degrado($opacity-start, $opacity-end) {
+    background: rgb(105,22,113);
+    background: -moz-linear-gradient(left, rgba(105,22,113,$opacity-start) 0%, rgba(190,33,93,$opacity-end) 100%);
+    background: -webkit-linear-gradient(left, rgba(105,22,113,$opacity-start) 0%,rgba(190,33,93,$opacity-end) 100%);
+    background: linear-gradient(to right, rgba(105,22,113,$opacity-start) 0%,rgba(190,33,93,$opacity-end) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#691671', endColorstr='#be215d',GradientType=1 );
+}
+
+.carouselExampleIndicators {
+    position: relative;
+    width: 100%;
+}
+
+.carouselExampleIndicators, .carousel-inner, .carousel-item, .img-slider {
+    height: 100vh;
+}
+
+.img-slider {
+    
+    object-fit: contain;
+}
+
+.img-slider-1 {
+    @include img-slider;
+    background-image: url($server_path + "carousel/Image00001.jpg");
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    background-size: cover;
+}
+
+.img-slider-2 {
+    @include img-slider;
+    background-image: url($server_path + "carousel/Image00002.jpg");
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    background-size: cover;
+}
+
+.img-slider-3 {
+    @include img-slider;
+    background-image: url($server_path + "carousel/Image00003.jpg");
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    background-size: cover;
+}
+
+.img-slider-4 {
+    @include img-slider;
+    background-image: url($server_path + "carousel/Image00004.jpg");
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    background-size: cover;
+}
+
+.img-slider-5 {
+    @include img-slider;
+    background-image: url($server_path + "carousel/Image00005.jpg");
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    background-size: cover;
+}
+
+.img-slider-6 {
+    @include img-slider;
+    background-image: url($server_path + "carousel/Image00006.jpg");
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    background-size: cover;
+}
+
+.img-slider-7 {
+    @include img-slider;
+    background-image: url($server_path + "carousel/Image00007.jpg");
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    background-size: cover;
+}
+
+header {
+    position: relative;
+}
+
+.menu {
+    z-index: 30;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    display: block;
+    @include degrado(1, 1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 8rem;
+    margin-top: 45px;
+    ul {
+        list-style-type: none;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        margin-block-start: 0px;
+        margin-block-end: 0px;
+        margin-inline-start: 0px;
+        margin-inline-end: 0px;
+        padding-inline-start: 0px;
+        li {
+            a {
+                display: block;
+                margin-right: 20px;
+                text-decoration: none;
+                color: #fff;
+                font-weight: 500;
+                text-transform: uppercase;
+                &:hover {
+                    font-size: 1.1rem;
+                    /*
+                    color: $color-uno;
+                    font-weight: 600;
+                    text-shadow: 1px 1px 1px #FFFFFF;
+                    */
+                }
+            }
+        }
+    }
+}
+
+.logo {
+    position: absolute;
+    right: 160px;
+    top: 5px;
+    position: absolute;
+    right: 100px;
+    z-index: 33;
+    img {
+        width: 130px;
+        opacity: 1 !important;
+    }
+}
+
+.menu-leyenda {
+    position: absolute;
+    bottom: 4px;
+    left: 12rem;
+    h1 {
+        text-transform: uppercase;
+        color: #fff;
+        font-weight: 700;
+        text-shadow: 1px 1px 1px #3D3D3D;
+        font-size: 3em;
+        margin-block-start: 0px;
+        margin-block-end: 0px;
+        margin: 0px;
+        padding: 0px;
+        vertical-align: bottom;
+        line-height: 2rem;
+    }
+    span {
+        text-transform: uppercase;
+        color: #fff;
+        font-weight: 700;
+        text-shadow: 1px 1px 1px #3D3D3D;
+        font-size: 3em;
+    }
+}
+
+.menu-visita-container {
+    position: absolute;
+    top: 94px;
+    left: 0px;
+    height: 400px;
+    display: block;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    @include degrado(.95, .8);
+    z-index: 30;
+    padding-top: 10px;
+    .menu-visita {
+        color: #fff;
+    }
+}
+
+.Zonas {
+    display: flex;
+}
+
+.zonas-data {
+    display: flex;
+}
+
+.media-zone {
+    width: 330px;
+    height: 70px;
+    padding: 0 8px;
+    margin-right: 10px;
+    margin-bottom: 20px;
+    //border-radius: 15px;
+    
+    img {
+        height: 80px;
+        width: 80px;
+        float: left;
+    }
+    span {
+        display: block;
+        text-align: right;
+        width: 100%;
+        padding-top: 40px;
+        font-size: 1.2rem;
+    }
+}
+
+@media only screen and (max-width: 880px) {
+    .menu {
+        padding: 0 1rem;
+        ul {
+            li {
+                a {
+                    margin-right: 10px;
+                }
+            }
+        }
+        .logo {
+            img {
+               width: 180px;
+            }
+        }
+    }
+    
+    .menu-leyenda {
+        position: absolute;
+        bottom: 5rem;
+        left: 12rem;
+    
+        h1 {
+            font-size: 3em;
+        }
+        span {
+            font-size: 3em;
+            //margin-top: -20px;
+        }
+    }
+}
+
+.div-zona {
+    max-width: 360px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px;
+    .div-zona-img {
+        width: 128px;
+        height: 128px;
+    }
+    .div-zona-title {
+
+    }
+}
+
+@mixin reco-zona {
+    position: relative;
+    height: 260px;
+    width: 100%;
+    cursor: pointer;
+    .cuadro-titulo {
+        p {
+            margin-block-start: 0;
+            margin-block-end: 0;
+            line-height: 1em;
+            text-transform: uppercase;
+        }
+    }
+    &:hover {
+        background-color: rgba(0,0,0, .1);
+    }
+}
+
+.Recorridos {
+    width: 100%;
+    .reco-leyenda {
+        padding-left: 40px;
+        padding-right: 40px;
+        text-align: justify; /* For Edge */
+        -moz-text-align-last: justify; /* For Firefox prior 58.0 */
+        text-align-last: justify;
+        max-width: 800px;
+        margin: 20px 0 0 auto;
+        .reco-l-sub1, .reco-l-sub2 {
+            text-align: right;
+            text-transform: uppercase;
+            color: #fff;
+            text-shadow: 1px 1px 1px #000000;
+            font-size: 3rem;
+            margin-bottom: 0px;
+            line-height: 3rem;
+        }
+        .reco-l-sub2 {
+            letter-spacing: -1px;
+        }
+    }
+    .reco-titulo {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 300px;
+        .reco-t-sub1 {
+            font-size: 3em;
+            color: $color-uno;
+            text-transform: capitalize;
+            font-weight: 600;
+        }
+        .reco-t-sub2 {
+            font-size: 2em;
+            padding: 2px 15px;
+            background-color: $color-uno;
+            color: #fff;
+            text-transform: uppercase;
+        }
+    }
+    .reco-container {
+        margin: 40px auto;
+        max-width: 1024px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, 240px);
+        //grid-auto-flow: column;
+        //grid-auto-columns: minmax(200px, 1fr);
+        grid-gap: 20px;
+        widows: 100%;
+        //justify-items: center;
+        align-content: space-between;
+        justify-content: space-around;
+       
+        //grid-auto-flow: column;
+        #sierras {
+            //grid-area: sierras;
+            @include reco-zona();
+            .cuadro-color {
+                position: absolute;
+                top: 0;
+                left: 0;
+                height: (100% - 5%);
+                display: block;
+                background-color: #cb6120;
+                width: 40%;
+            }
+            img {
+                position: absolute;
+                top: 5px;
+                left: 10px;
+                z-index: 2;
+                width: 200px;
+                height: 200px;
+            }
+            .cuadro-titulo {
+                position: absolute;
+                bottom: 0;
+                left: 45%;
+                z-index: 3;
+                color: #cb6120;
+                font-size: 1.5em;
+                font-weight: 600;
+                p {
+                    margin-bottom: 0px;
+                }
+            }
+        }
+        #norte {
+            //grid-area: norte;
+            @include reco-zona();
+            .cuadro-color {
+                position: absolute;
+                top: 0;
+                left: 0;
+                height: 35%;
+                display: block;
+                background-color: #a2bd31;
+                width: 100%;
+            }
+            img {
+                position: absolute;
+                top: 0;
+                right: 10px;
+                z-index: 2;
+                width: 200px;
+                height: 200px;
+            }
+            .cuadro-titulo {
+                position: absolute;
+                bottom: 0;
+                left: 30px;
+                z-index: 3;
+                color: #a2bd31;
+                font-size: 1.5em;
+                font-weight: 600;
+                p {
+                    margin-bottom: 0px;
+                }
+            }
+        }
+        #costa {
+            //grid-area: costa;
+            @include reco-zona();
+            .cuadro-color {
+                position: absolute;
+                top: 100px;
+                left: 0;
+                height: 35%;
+                display: block;
+                background-color: #326534;
+                width: 100%;
+            }
+            img {
+                position: absolute;
+                top: 0;
+                left: 10px;
+                z-index: 2;
+                width: 200px;
+                height: 200px;
+            }
+            .cuadro-titulo {
+                position: absolute;
+                bottom: 0;
+                left: 15px;
+                z-index: 3;
+                color: #326534;
+                font-size: 1.5em;
+                font-weight: 600;
+                p {
+                    margin-bottom: 0px;
+                }
+            }
+        }
+        #valle {
+            //grid-area: valle;
+            @include reco-zona();
+            .cuadro-color {
+                position: absolute;
+                top: 0;
+                right: 0;
+                height: 80%;
+                display: block;
+                background-color: #bf3276;
+                width: 35%;
+            }
+            img {
+                position: absolute;
+                top: 1%;
+                left: 0;
+                z-index: 2;
+                width: 200px;
+                height: 200px;
+            }
+            .cuadro-titulo {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                z-index: 3;
+                color: #bf3276;
+                font-size: 1.5em;
+                font-weight: 600;
+                p {
+                    margin-bottom: 0px;
+                }
+            }
+        }
+        #villa {
+            //grid-area: villa;
+            @include reco-zona();
+        }
+        #huellas {
+            //grid-area: huella;
+            @include reco-zona();
+        }
+        #llanura {
+            //grid-area: llanura;
+            @include reco-zona();
+        }
+        #termas {
+            //grid-area: termas;
+            @include reco-zona();
+        }
+    }
+}
