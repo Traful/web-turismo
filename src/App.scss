@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Dosis');
 
-$server_path: "http://localhost/web/recursos/";
+$server_path: "http://localhost/api-turismo/public/recursos/";
 
 body { 
     font-family: 'Dosis', sans-serif;
@@ -28,6 +28,11 @@ $color-dos: rgba(237,15,104, 1);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#691671', endColorstr='#be215d',GradientType=1 );
 }
 
+@mixin text-sh($horizontal-length, $vertical-length, $blur-radius, $shadow-color) {
+    text-shadow: $horizontal-length $vertical-length $blur-radius $shadow-color;
+    //text-sh(1px, 1px, 1px, #000000);
+}
+
 .carouselExampleIndicators {
     position: relative;
     width: 100%;
@@ -38,7 +43,6 @@ $color-dos: rgba(237,15,104, 1);
 }
 
 .img-slider {
-    
     object-fit: contain;
 }
 
@@ -299,7 +303,6 @@ header {
 }
 
 .Recorridos {
-    width: 100%;
     .reco-leyenda {
         padding-left: 40px;
         padding-right: 40px;
@@ -402,7 +405,7 @@ header {
             }
             img {
                 position: absolute;
-                top: 0;
+                top: 1%;
                 right: 10px;
                 z-index: 2;
                 width: 200px;
@@ -490,18 +493,342 @@ header {
         #villa {
             //grid-area: villa;
             @include reco-zona();
+            .cuadro-color {
+                position: absolute;
+                top: 40%;
+                right: 0;
+                height: 105px;
+                display: block;
+                background-color: #e5b449;
+                width: 100%;
+            }
+            img {
+                position: absolute;
+                top: 1%;
+                left: 5%;
+                z-index: 2;
+                width: 200px;
+                height: 200px;
+            }
+            .cuadro-titulo {
+                position: absolute;
+                bottom: 0;
+                left: 5%;
+                z-index: 3;
+                color: #e5b449;
+                font-size: 1.5em;
+                font-weight: 600;
+                p {
+                    margin-bottom: 0px;
+                }
+            }
         }
         #huellas {
             //grid-area: huella;
             @include reco-zona();
+            .cuadro-color {
+                position: absolute;
+                top: 0;
+                right: 0;
+                height: 85%;
+                display: block;
+                background-color: #a01127;
+                width: 45%;
+            }
+            img {
+                position: absolute;
+                top: 3%;
+                left: 0;
+                z-index: 2;
+                width: 200px;
+                height: 200px;
+            }
+            .cuadro-titulo {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                z-index: 3;
+                color: #a01127;
+                font-size: 1.5em;
+                font-weight: 600;
+                p {
+                    margin-bottom: 0px;
+                }
+            }
         }
         #llanura {
             //grid-area: llanura;
             @include reco-zona();
+            .cuadro-color {
+                position: absolute;
+                top: 0;
+                left: 0;
+                height: 35%;
+                display: block;
+                background-color: #618dc5;
+                width: 100%;
+            }
+            img {
+                position: absolute;
+                top: 2%;
+                left: 2%;
+                z-index: 2;
+                width: 200px;
+                height: 200px;
+            }
+            .cuadro-titulo {
+                position: absolute;
+                bottom: 0;
+                left: 2%;
+                z-index: 3;
+                color: #618dc5;
+                font-size: 1.5em;
+                font-weight: 600;
+                p {
+                    margin-bottom: 0px;
+                }
+            }
         }
         #termas {
             //grid-area: termas;
             @include reco-zona();
+            .cuadro-color {
+                position: absolute;
+                top: 0;
+                left: 0;
+                height: 90%;
+                display: block;
+                background-color: #5ea099;
+                width: 35%;
+            }
+            img {
+                position: absolute;
+                top: 3%;
+                left: 10%;
+                z-index: 2;
+                width: 200px;
+                height: 200px;
+            }
+            .cuadro-titulo {
+                position: absolute;
+                bottom: 0;
+                left: 38%;
+                z-index: 3;
+                color: #5ea099;
+                font-size: 1.5em;
+                font-weight: 600;
+                p {
+                    margin-bottom: 0px;
+                }
+            }
         }
     }
 }
+
+@media only screen and (max-width: 790px) {
+    .Recorridos {
+        .reco-leyenda {
+            text-align: right;
+            -moz-text-align-last: none; /* For Firefox prior 58.0 */
+            text-align-last: none;
+            max-width: 600px;
+            .reco-l-sub1, .reco-l-sub2 {
+                font-size: 2.1rem;
+                line-height: 2.4rem;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 580px) {
+    .Recorridos {
+        .reco-leyenda {
+            text-align: center;
+            -moz-text-align-last: center;
+            text-align-last: center;
+            max-width: 580px;
+            .reco-l-sub1, .reco-l-sub2 {
+                font-size: 1.1rem;
+                line-height: 1.4rem;
+            }
+        }
+    }
+}
+
+.Descarga {
+    background-image: url($server_path + "");
+    @include degrado(.95, .8);
+    height: 150px;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 100px;
+    img {
+        width: 300px;
+    }
+    .descarga-leyenda {
+        display: flex;
+        align-items: center;
+        color: #fff;
+        cursor: pointer;
+        .descarga-titulos {
+            display: flex;
+            flex-direction: column;
+            text-align:justify;
+            word-break:keep-all;
+            .dt-1 {
+                text-transform: uppercase;
+                @include text-sh(1px, 1px, 2px, #000);
+                letter-spacing: 1.15rem;
+                font-size: 3.5rem;
+                line-height: 3.5rem;
+                margin-bottom: 3px;
+                font-weight: 100;
+            }
+            .dt-2 {
+                text-transform: uppercase;
+                @include text-sh(2px, 2px, 5px, #000);
+                letter-spacing: .08rem;
+                font-size: 3rem;
+                line-height: 3rem;
+                margin-bottom: 3px;
+                font-weight: 800;
+            }
+            .dt-3 {
+                text-transform: lowercase;
+                @include text-sh(2px, 2px, 5px, #000);
+                letter-spacing: .5rem;
+                font-size: 1.5rem;
+                line-height: 1.5rem;
+                font-weight: 800;
+            }
+        }
+    }
+    .descarga-icono {
+        i {
+            font-size: 2rem;
+            margin-left: 40px;
+            @include text-sh(2px, 2px, 5px, #000);
+        }
+    }
+}
+
+@media only screen and (max-width: 890px) {
+    .Descarga {
+        margin-top: 160px;
+        width: 100%;
+        height: auto;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding-bottom: 10px;
+        img {
+            //width: 300px;
+            margin-top: -140px;
+        }
+        .descarga-leyenda {
+            flex-direction: column;
+        }
+        .descarga-icono {
+            i {
+                margin: 30px 0px 0px 0px;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .Descarga {
+        .descarga-leyenda {
+            .descarga-titulos {
+                text-align: center;
+                .dt-1 {
+                    text-transform: uppercase;
+                    @include text-sh(1px, 1px, 2px, #000);
+                    letter-spacing: 1rem;
+                    font-size: 2rem;
+                    line-height: 2rem;
+                    margin-bottom: 3px;
+                    font-weight: 100;
+                }
+                .dt-2 {
+                    text-transform: uppercase;
+                    @include text-sh(2px, 2px, 5px, #000);
+                    letter-spacing: .08rem;
+                    font-size: 2.5rem;
+                    line-height: 2.5rem;
+                    margin-bottom: 3px;
+                    font-weight: 800;
+                }
+                .dt-3 {
+                    text-transform: lowercase;
+                    @include text-sh(2px, 2px, 5px, #000);
+                    letter-spacing: .5rem;
+                    font-size: 1.5rem;
+                    line-height: 1.5rem;
+                    font-weight: 800;
+                }
+            }
+        }
+    }
+}
+
+.Novedades {
+    padding-left: 10px;
+    
+    .novedades-body {
+        width: 100%;
+        height: 200px;
+        position: absolute;
+        overflow: hidden;
+        position: relative;
+        top: 0;
+        left: 0;
+        #novedades-carousel {
+            position: absolute;
+            top: 0;
+            left: 20px;
+            width: 100%;
+            height: 100%;
+            display: block;
+            background-color: $color-uno;
+            padding-left: 100px;
+            .carousel-inner {
+                height: auto;
+                //padding: 10px;
+                .carousel-item {
+                    height: auto;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    img {
+                        width: 75px;
+                        height: 75px;
+                    }
+                }
+            }
+        }
+        .novedades-titulo {
+            top: 50%;
+            transform: translateY(-50%);
+            left: 0;
+            background-color: #fff;
+            padding: 10px 10px 10px 0;
+            position: absolute;
+            p {
+                margin: 0;
+                padding: 0;
+                text-align: right;
+                width: 50px;
+                font-size: 2rem;
+                line-height: 2rem;
+                font-weight: 800;
+                margin-block-start: 0;
+                margin-block-end: 0;
+                color: $color-uno;
+            }
+        }
+    }
+}
+

@@ -22,7 +22,7 @@ body {
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  background-image: url("http://localhost/web/recursos/carousel/Image00001.jpg");
+  background-image: url("http://localhost/api-turismo/public/recursos/carousel/Image00001.jpg");
   background-repeat: no-repeat;
   background-position: 0 0;
   background-size: cover;
@@ -34,7 +34,7 @@ body {
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  background-image: url("http://localhost/web/recursos/carousel/Image00002.jpg");
+  background-image: url("http://localhost/api-turismo/public/recursos/carousel/Image00002.jpg");
   background-repeat: no-repeat;
   background-position: 0 0;
   background-size: cover;
@@ -46,7 +46,7 @@ body {
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  background-image: url("http://localhost/web/recursos/carousel/Image00003.jpg");
+  background-image: url("http://localhost/api-turismo/public/recursos/carousel/Image00003.jpg");
   background-repeat: no-repeat;
   background-position: 0 0;
   background-size: cover;
@@ -58,7 +58,7 @@ body {
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  background-image: url("http://localhost/web/recursos/carousel/Image00004.jpg");
+  background-image: url("http://localhost/api-turismo/public/recursos/carousel/Image00004.jpg");
   background-repeat: no-repeat;
   background-position: 0 0;
   background-size: cover;
@@ -70,7 +70,7 @@ body {
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  background-image: url("http://localhost/web/recursos/carousel/Image00005.jpg");
+  background-image: url("http://localhost/api-turismo/public/recursos/carousel/Image00005.jpg");
   background-repeat: no-repeat;
   background-position: 0 0;
   background-size: cover;
@@ -82,7 +82,7 @@ body {
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  background-image: url("http://localhost/web/recursos/carousel/Image00006.jpg");
+  background-image: url("http://localhost/api-turismo/public/recursos/carousel/Image00006.jpg");
   background-repeat: no-repeat;
   background-position: 0 0;
   background-size: cover;
@@ -94,7 +94,7 @@ body {
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  background-image: url("http://localhost/web/recursos/carousel/Image00007.jpg");
+  background-image: url("http://localhost/api-turismo/public/recursos/carousel/Image00007.jpg");
   background-repeat: no-repeat;
   background-position: 0 0;
   background-size: cover;
@@ -273,9 +273,6 @@ header {
   width: 128px;
   height: 128px;
 }
-.Recorridos {
-  width: 100%;
-}
 .Recorridos .reco-leyenda {
   padding-left: 40px;
   padding-right: 40px;
@@ -399,7 +396,7 @@ header {
 }
 .Recorridos .reco-container #norte img {
   position: absolute;
-  top: 0;
+  top: 1%;
   right: 10px;
   z-index: 2;
   width: 200px;
@@ -520,6 +517,35 @@ header {
 .Recorridos .reco-container #villa:hover {
   background-color: rgba(0, 0, 0, 0.1);
 }
+.Recorridos .reco-container #villa .cuadro-color {
+  position: absolute;
+  top: 40%;
+  right: 0;
+  height: 105px;
+  display: block;
+  background-color: #e5b449;
+  width: 100%;
+}
+.Recorridos .reco-container #villa img {
+  position: absolute;
+  top: 1%;
+  left: 5%;
+  z-index: 2;
+  width: 200px;
+  height: 200px;
+}
+.Recorridos .reco-container #villa .cuadro-titulo {
+  position: absolute;
+  bottom: 0;
+  left: 5%;
+  z-index: 3;
+  color: #e5b449;
+  font-size: 1.5em;
+  font-weight: 600;
+}
+.Recorridos .reco-container #villa .cuadro-titulo p {
+  margin-bottom: 0px;
+}
 .Recorridos .reco-container #huellas {
   position: relative;
   height: 260px;
@@ -534,6 +560,35 @@ header {
 }
 .Recorridos .reco-container #huellas:hover {
   background-color: rgba(0, 0, 0, 0.1);
+}
+.Recorridos .reco-container #huellas .cuadro-color {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 85%;
+  display: block;
+  background-color: #a01127;
+  width: 45%;
+}
+.Recorridos .reco-container #huellas img {
+  position: absolute;
+  top: 3%;
+  left: 0;
+  z-index: 2;
+  width: 200px;
+  height: 200px;
+}
+.Recorridos .reco-container #huellas .cuadro-titulo {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 3;
+  color: #a01127;
+  font-size: 1.5em;
+  font-weight: 600;
+}
+.Recorridos .reco-container #huellas .cuadro-titulo p {
+  margin-bottom: 0px;
 }
 .Recorridos .reco-container #llanura {
   position: relative;
@@ -550,6 +605,35 @@ header {
 .Recorridos .reco-container #llanura:hover {
   background-color: rgba(0, 0, 0, 0.1);
 }
+.Recorridos .reco-container #llanura .cuadro-color {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 35%;
+  display: block;
+  background-color: #618dc5;
+  width: 100%;
+}
+.Recorridos .reco-container #llanura img {
+  position: absolute;
+  top: 2%;
+  left: 2%;
+  z-index: 2;
+  width: 200px;
+  height: 200px;
+}
+.Recorridos .reco-container #llanura .cuadro-titulo {
+  position: absolute;
+  bottom: 0;
+  left: 2%;
+  z-index: 3;
+  color: #618dc5;
+  font-size: 1.5em;
+  font-weight: 600;
+}
+.Recorridos .reco-container #llanura .cuadro-titulo p {
+  margin-bottom: 0px;
+}
 .Recorridos .reco-container #termas {
   position: relative;
   height: 260px;
@@ -564,6 +648,228 @@ header {
 }
 .Recorridos .reco-container #termas:hover {
   background-color: rgba(0, 0, 0, 0.1);
+}
+.Recorridos .reco-container #termas .cuadro-color {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 90%;
+  display: block;
+  background-color: #5ea099;
+  width: 35%;
+}
+.Recorridos .reco-container #termas img {
+  position: absolute;
+  top: 3%;
+  left: 10%;
+  z-index: 2;
+  width: 200px;
+  height: 200px;
+}
+.Recorridos .reco-container #termas .cuadro-titulo {
+  position: absolute;
+  bottom: 0;
+  left: 38%;
+  z-index: 3;
+  color: #5ea099;
+  font-size: 1.5em;
+  font-weight: 600;
+}
+.Recorridos .reco-container #termas .cuadro-titulo p {
+  margin-bottom: 0px;
+}
+
+@media only screen and (max-width: 790px) {
+  .Recorridos .reco-leyenda {
+    text-align: right;
+    -moz-text-align-last: none;
+    /* For Firefox prior 58.0 */
+    text-align-last: none;
+    max-width: 600px;
+  }
+  .Recorridos .reco-leyenda .reco-l-sub1, .Recorridos .reco-leyenda .reco-l-sub2 {
+    font-size: 2.1rem;
+    line-height: 2.4rem;
+  }
+}
+@media only screen and (max-width: 580px) {
+  .Recorridos .reco-leyenda {
+    text-align: center;
+    -moz-text-align-last: center;
+    text-align-last: center;
+    max-width: 580px;
+  }
+  .Recorridos .reco-leyenda .reco-l-sub1, .Recorridos .reco-leyenda .reco-l-sub2 {
+    font-size: 1.1rem;
+    line-height: 1.4rem;
+  }
+}
+.Descarga {
+  background-image: url("http://localhost/api-turismo/public/recursos/");
+  background: #691671;
+  background: -moz-linear-gradient(left, rgba(105, 22, 113, 0.95) 0%, rgba(190, 33, 93, 0.8) 100%);
+  background: -webkit-linear-gradient(left, rgba(105, 22, 113, 0.95) 0%, rgba(190, 33, 93, 0.8) 100%);
+  background: linear-gradient(to right, rgba(105, 22, 113, 0.95) 0%, rgba(190, 33, 93, 0.8) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#691671", endColorstr="#be215d",GradientType=1 );
+  height: 150px;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 100px;
+}
+.Descarga img {
+  width: 300px;
+}
+.Descarga .descarga-leyenda {
+  display: flex;
+  align-items: center;
+  color: #fff;
+  cursor: pointer;
+}
+.Descarga .descarga-leyenda .descarga-titulos {
+  display: flex;
+  flex-direction: column;
+  text-align: justify;
+  word-break: keep-all;
+}
+.Descarga .descarga-leyenda .descarga-titulos .dt-1 {
+  text-transform: uppercase;
+  text-shadow: 1px 1px 2px #000;
+  letter-spacing: 1.15rem;
+  font-size: 3.5rem;
+  line-height: 3.5rem;
+  margin-bottom: 3px;
+  font-weight: 100;
+}
+.Descarga .descarga-leyenda .descarga-titulos .dt-2 {
+  text-transform: uppercase;
+  text-shadow: 2px 2px 5px #000;
+  letter-spacing: 0.08rem;
+  font-size: 3rem;
+  line-height: 3rem;
+  margin-bottom: 3px;
+  font-weight: 800;
+}
+.Descarga .descarga-leyenda .descarga-titulos .dt-3 {
+  text-transform: lowercase;
+  text-shadow: 2px 2px 5px #000;
+  letter-spacing: 0.5rem;
+  font-size: 1.5rem;
+  line-height: 1.5rem;
+  font-weight: 800;
+}
+.Descarga .descarga-icono i {
+  font-size: 2rem;
+  margin-left: 40px;
+  text-shadow: 2px 2px 5px #000;
+}
+
+@media only screen and (max-width: 890px) {
+  .Descarga {
+    margin-top: 160px;
+    width: 100%;
+    height: auto;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 10px;
+  }
+  .Descarga img {
+    margin-top: -140px;
+  }
+  .Descarga .descarga-leyenda {
+    flex-direction: column;
+  }
+  .Descarga .descarga-icono i {
+    margin: 30px 0px 0px 0px;
+  }
+}
+@media only screen and (max-width: 500px) {
+  .Descarga .descarga-leyenda .descarga-titulos {
+    text-align: center;
+  }
+  .Descarga .descarga-leyenda .descarga-titulos .dt-1 {
+    text-transform: uppercase;
+    text-shadow: 1px 1px 2px #000;
+    letter-spacing: 1rem;
+    font-size: 2rem;
+    line-height: 2rem;
+    margin-bottom: 3px;
+    font-weight: 100;
+  }
+  .Descarga .descarga-leyenda .descarga-titulos .dt-2 {
+    text-transform: uppercase;
+    text-shadow: 2px 2px 5px #000;
+    letter-spacing: 0.08rem;
+    font-size: 2.5rem;
+    line-height: 2.5rem;
+    margin-bottom: 3px;
+    font-weight: 800;
+  }
+  .Descarga .descarga-leyenda .descarga-titulos .dt-3 {
+    text-transform: lowercase;
+    text-shadow: 2px 2px 5px #000;
+    letter-spacing: 0.5rem;
+    font-size: 1.5rem;
+    line-height: 1.5rem;
+    font-weight: 800;
+  }
+}
+.Novedades {
+  padding-left: 10px;
+}
+.Novedades .novedades-body {
+  width: 100%;
+  height: 200px;
+  position: absolute;
+  overflow: hidden;
+  position: relative;
+  top: 0;
+  left: 0;
+}
+.Novedades .novedades-body #novedades-carousel {
+  position: absolute;
+  top: 0;
+  left: 20px;
+  width: 100%;
+  height: 100%;
+  display: block;
+  background-color: #722789;
+  padding-left: 100px;
+}
+.Novedades .novedades-body #novedades-carousel .carousel-inner {
+  height: auto;
+}
+.Novedades .novedades-body #novedades-carousel .carousel-inner .carousel-item {
+  height: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.Novedades .novedades-body #novedades-carousel .carousel-inner .carousel-item img {
+  width: 75px;
+  height: 75px;
+}
+.Novedades .novedades-body .novedades-titulo {
+  top: 50%;
+  transform: translateY(-50%);
+  left: 0;
+  background-color: #fff;
+  padding: 10px 10px 10px 0;
+  position: absolute;
+}
+.Novedades .novedades-body .novedades-titulo p {
+  margin: 0;
+  padding: 0;
+  text-align: right;
+  width: 50px;
+  font-size: 2rem;
+  line-height: 2rem;
+  font-weight: 800;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  color: #722789;
 }
 
 /*# sourceMappingURL=App.css.map */

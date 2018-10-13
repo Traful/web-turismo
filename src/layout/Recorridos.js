@@ -23,7 +23,7 @@ class Recorridos extends Component {
                 <div className="reco-container">
                     <div id="sierras">
                         <div className="cuadro-color"></div>
-                        <img src={`${process.env.REACT_APP_API_RECURSOS}/recursos/zonas/Image00001.jpg`} className="thumbnail" alt="" />
+                        <img src={`${process.env.REACT_APP_API_RECURSOS}/recursos/zonas/sierras.jpg`} className="thumbnail" alt="" />
                         <div className="cuadro-titulo">
                             <p>Sierras</p>
                             <p>Centrales</p>
@@ -31,7 +31,7 @@ class Recorridos extends Component {
                     </div>
                     <div id="norte">
                         <div className="cuadro-color"></div>
-                        <img src={`${process.env.REACT_APP_API_RECURSOS}/recursos/zonas/Image00001.jpg`} className="thumbnail" alt="" />
+                        <img src={`${process.env.REACT_APP_API_RECURSOS}/recursos/zonas/norte.jpg`} className="thumbnail" alt="" />
                         <div className="cuadro-titulo">
                             <p>Norte</p>
                             <p>Puntano</p>
@@ -39,7 +39,7 @@ class Recorridos extends Component {
                     </div>
                     <div id="costa">
                         <div className="cuadro-color"></div>
-                        <img src={`${process.env.REACT_APP_API_RECURSOS}/recursos/zonas/Image00001.jpg`} className="thumbnail" alt="" />
+                        <img src={`${process.env.REACT_APP_API_RECURSOS}/recursos/zonas/costa.jpg`} className="thumbnail" alt="" />
                         <div className="cuadro-titulo">
                             <p>Costa de los</p>
                             <p>Comechingones</p>
@@ -47,16 +47,44 @@ class Recorridos extends Component {
                     </div>
                     <div id="valle">
                         <div className="cuadro-color"></div>
-                        <img src={`${process.env.REACT_APP_API_RECURSOS}/recursos/zonas/Image00001.jpg`} className="thumbnail" alt="" />
+                        <img src={`${process.env.REACT_APP_API_RECURSOS}/recursos/zonas/valle.jpg`} className="thumbnail" alt="" />
                         <div className="cuadro-titulo">
                             <p>Valle del Conlara</p>
                             <p>y San Martín</p>
                         </div>
                     </div>
-                    <div id="villa">Villa</div>
-                    <div id="huellas">Huellas</div>
-                    <div id="llanura">Llanura</div>
-                    <div id="termas">Termas</div>
+                    <div id="villa">
+                        <div className="cuadro-color"></div>
+                        <img src={`${process.env.REACT_APP_API_RECURSOS}/recursos/zonas/villa.jpg`} className="thumbnail" alt="" />
+                        <div className="cuadro-titulo">
+                            <p>Villa Mercedes</p>
+                            <p>y El Morro</p>
+                        </div>
+                    </div>
+                    <div id="huellas">
+                        <div className="cuadro-color"></div>
+                        <img src={`${process.env.REACT_APP_API_RECURSOS}/recursos/zonas/huellas.jpg`} className="thumbnail" alt="" />
+                        <div className="cuadro-titulo">
+                            <p>Huellas</p>
+                            <p>Del Pasado</p>
+                        </div>
+                    </div>
+                    <div id="llanura">
+                        <div className="cuadro-color"></div>
+                        <img src={`${process.env.REACT_APP_API_RECURSOS}/recursos/zonas/llanura.jpg`} className="thumbnail" alt="" />
+                        <div className="cuadro-titulo">
+                            <p>Llanura</p>
+                            <p>Sureña</p>
+                        </div>
+                    </div>
+                    <div id="termas">
+                        <div className="cuadro-color"></div>
+                        <img src={`${process.env.REACT_APP_API_RECURSOS}/recursos/zonas/termas.jpg`} className="thumbnail" alt="" />
+                        <div className="cuadro-titulo">
+                            <p>Termas y</p>
+                            <p>Salinas</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         );
