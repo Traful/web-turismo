@@ -1,0 +1,123 @@
+/*
+    Componente Descarga App
+*/
+
+.Descarga {
+    background-image: url($server_path + "");
+    @include degrado(.95, .8);
+    height: 150px;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    img {
+        width: 300px;
+    }
+    .descarga-leyenda {
+        display: flex;
+        align-items: center;
+        color: #fff;
+        cursor: pointer;
+        .descarga-titulos {
+            display: flex;
+            flex-direction: column;
+            text-align:justify;
+            word-break:keep-all;
+            .dt-1 {
+                text-transform: uppercase;
+                @include text-sh(1px, 1px, 2px, #000);
+                letter-spacing: 1.15rem;
+                font-size: 3.5rem;
+                line-height: 3.5rem;
+                margin-bottom: 3px;
+                font-weight: 100;
+            }
+            .dt-2 {
+                text-transform: uppercase;
+                @include text-sh(2px, 2px, 5px, #000);
+                letter-spacing: .08rem;
+                font-size: 3rem;
+                line-height: 3rem;
+                margin-bottom: 3px;
+                font-weight: 800;
+            }
+            .dt-3 {
+                text-transform: lowercase;
+                @include text-sh(2px, 2px, 5px, #000);
+                letter-spacing: .5rem;
+                font-size: 1.5rem;
+                line-height: 1.5rem;
+                font-weight: 800;
+            }
+        }
+    }
+    .descarga-icono {
+        i {
+            font-size: 2rem;
+            margin-left: 40px;
+            @include text-sh(2px, 2px, 5px, #000);
+        }
+    }
+}
+
+@media only screen and (max-width: 890px) {
+    .Descarga {
+        margin-top: 160px;
+        width: 100%;
+        height: auto;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding-bottom: 10px;
+        img {
+            //width: 300px;
+            margin-top: -140px;
+        }
+        .descarga-leyenda {
+            flex-direction: column;
+        }
+        .descarga-icono {
+            i {
+                margin: 30px 0px 0px 0px;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .Descarga {
+        .descarga-leyenda {
+            .descarga-titulos {
+                text-align: center;
+                .dt-1 {
+                    text-transform: uppercase;
+                    @include text-sh(1px, 1px, 2px, #000);
+                    letter-spacing: 1rem;
+                    font-size: 2rem;
+                    line-height: 2rem;
+                    margin-bottom: 3px;
+                    font-weight: 100;
+                }
+                .dt-2 {
+                    text-transform: uppercase;
+                    @include text-sh(2px, 2px, 5px, #000);
+                    letter-spacing: .08rem;
+                    font-size: 2.5rem;
+                    line-height: 2.5rem;
+                    margin-bottom: 3px;
+                    font-weight: 800;
+                }
+                .dt-3 {
+                    text-transform: lowercase;
+                    @include text-sh(2px, 2px, 5px, #000);
+                    letter-spacing: .5rem;
+                    font-size: 1.5rem;
+                    line-height: 1.5rem;
+                    font-weight: 800;
+                }
+            }
+        }
+    }
+}

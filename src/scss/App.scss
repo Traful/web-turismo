@@ -1,0 +1,73 @@
+@import "include/config";
+@import "include/init";
+@import "include/colors";
+@import "include/mixins";
+
+
+//Componente Menu.js
+@import "include/menu";
+
+//Sub Componente ZonaMenu
+@import "include/zonas_menu";
+
+//Slider Home
+@import "include/slider_home";
+
+//Componente Recorridos.js
+@import "include/recorridos";
+//Componente Descarga.js
+@import "include/descarga";
+//Componente Novedades.js
+@import "include/novedades";
+//Componente Novedadesfull.js
+@import "include/novedadesfull";
+
+
+
+
+@media only screen and (max-width: 880px) {
+    .menu {
+        padding: 0 1rem;
+        ul {
+            li {
+                a {
+                    margin-right: 10px;
+                }
+            }
+        }
+        .logo {
+            img {
+               width: 180px;
+            }
+        }
+    }
+    
+    .menu-leyenda {
+        position: absolute;
+        bottom: 5rem;
+        left: 12rem;
+    
+        h1 {
+            font-size: 3em;
+        }
+        span {
+            font-size: 3em;
+            //margin-top: -20px;
+        }
+    }
+}
+
+.div-zona {
+    max-width: 360px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px;
+    .div-zona-img {
+        width: 128px;
+        height: 128px;
+    }
+    .div-zona-title {
+
+    }
+}

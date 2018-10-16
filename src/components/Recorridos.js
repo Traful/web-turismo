@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from "react-router-dom";
 
 class Recorridos extends Component {
     constructor(props) {
@@ -21,14 +22,16 @@ class Recorridos extends Component {
                     <span className="reco-t-sub2">Zonas Turísticas</span>
                 </div>
                 <div className="reco-container">
-                    <div id="sierras">
-                        <div className="cuadro-color"></div>
-                        <img src={`${process.env.REACT_APP_API_RECURSOS}/recursos/zonas/sierras.jpg`} className="thumbnail" alt="" />
-                        <div className="cuadro-titulo">
-                            <p>Sierras</p>
-                            <p>Centrales</p>
+                    <Link to="zona/31">
+                        <div id="sierras">
+                            <div className="cuadro-color"></div>
+                            <img src={`${process.env.REACT_APP_API_RECURSOS}/recursos/zonas/sierras.jpg`} className="thumbnail" alt="" />
+                            <div className="cuadro-titulo">
+                                <p>Sierras</p>
+                                <p>Centrales</p>
+                            </div>
                         </div>
-                    </div>
+                    </Link>
                     <div id="norte">
                         <div className="cuadro-color"></div>
                         <img src={`${process.env.REACT_APP_API_RECURSOS}/recursos/zonas/norte.jpg`} className="thumbnail" alt="" />

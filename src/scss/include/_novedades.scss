@@ -1,0 +1,85 @@
+/*
+    Componente Novedades.js
+*/
+
+.Novedades {
+    padding-left: 10px;
+    
+    .novedades-body {
+        width: 100%;
+        height: 200px;
+        position: absolute;
+        overflow: hidden;
+        position: relative;
+        top: 0;
+        left: 0;
+        .novedades-carousel {
+            cursor: pointer;
+            position: absolute;
+            top: 0;
+            left: 20px;
+            height: 100%;
+            //width: 100%;
+            display: block;
+            background-color: $color-uno;
+            padding-left: 100px;
+            padding-top: 20px;
+            color: #fff;
+            .carousel-item-js {
+                height: auto;
+                display: flex;
+                //justify-content: space-between;
+                img {
+                    width: 160px;
+                    height: 160px;
+                    object-fit: cover;
+                    margin-right: 25px;
+                }
+                div {
+                    padding-right: 10px;
+                    p {
+                        margin-block-start: 0px;
+                        margin-block-end: 0px;
+                        margin-inline-start: 0px;
+                        margin-inline-end: 0px;
+                        &:nth-child(1) {
+                            text-transform: uppercase;
+                            font-size: 1.5rem;
+                            line-height: 1.8rem;
+                            font-weight: 800;
+                        }
+                        &:nth-child(2) {
+                            text-transform: uppercase;
+                            font-size: 1.5rem;
+                            line-height: 1.5rem;
+                            font-weight: 800;
+                            margin-bottom: 10px;
+                        }
+                    }
+                }
+            }
+        }
+        .novedades-titulo {
+            cursor: pointer;
+            top: 50%;
+            transform: translateY(-50%);
+            left: 0;
+            background-color: #fff;
+            padding: 10px 10px 10px 0;
+            position: absolute;
+            p {
+                text-transform: uppercase;
+                margin: 0;
+                padding: 0;
+                text-align: right;
+                width: 70px;
+                font-size: 2.0rem;
+                line-height: 2.0rem;
+                font-weight: 800;
+                margin-block-start: 0;
+                margin-block-end: 0;
+                color: $color-uno;
+            }
+        }
+    }
+}

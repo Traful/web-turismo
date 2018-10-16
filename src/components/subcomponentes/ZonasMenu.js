@@ -1,9 +1,21 @@
 import React, { Component } from 'react';
+import axios from "axios";
 
-class Zonas extends Component {
+const DataZona = (props) => {
+    console.log()
+    return(
+        <div className="ZonaMenu-Item" style={{"backgroundColor": `#${props.data.color}`}}>
+            <img src={props.data.foto} alt="Img" />
+            <span>{props.data.nombre}</span>
+        </div>
+    );
+}
+
+class ZonasMenu extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            /*
             dataZonas: [
                 {nombre: "Sierras Centrales", color: "#cb6120", foto: `${process.env.REACT_APP_API_RECURSOS}/recursos/zonas/Image00001.jpg`},
                 {nombre: "Norte Puntano", color: "#a2bd31", foto: `${process.env.REACT_APP_API_RECURSOS}/recursos/zonas/Image00001.jpg`},
@@ -14,16 +26,77 @@ class Zonas extends Component {
                 {nombre: "Llanura Sureña", color: "#618dc5", foto: `${process.env.REACT_APP_API_RECURSOS}/recursos/zonas/Image00001.jpg`},
                 {nombre: "Termas y Salinas", color: "#5ea099", foto: `${process.env.REACT_APP_API_RECURSOS}/recursos/zonas/Image00001.jpg`}
             ]
+            */
+           dataZonas: []
         }
     }
 
     componentWillMount() {
-
+        var self = this;
+        axios({
+            method: "get",
+            headers: {
+                "Authorization": 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1Mzk1MzMxMTEsImV4cCI6MTUzOTU2MTkxMSwianRpIjoiPz8_Iiwic3ViIjoiPz8_Iiwic2NvcGUiOnsiaWQiOiIxIiwicGVybWlzb3MiOnsiR0VUIjoiMSIsIlBPU1QiOiIxIiwiUFVUIjoiMSIsIlBBVENIIjoiMSIsIkRFTEVURSI6IjEifSwiaWR0aXBvIjoiMSJ9fQ.EgXE6dMUwinCs-X5QoYdI3YTXjoVZk62j43PHu5w6sk'
+            },
+            url: `${process.env.REACT_APP_API}/zonas`,
+            /*
+            auth: {
+                username: 'janedoe',
+                password: 's00pers3cret'
+            },
+            */
+            responseType: 'json'
+        })
+        .then((response) => {
+            self.setState({
+                dataZonas: response.data.data.registros
+            });
+        })
+        .catch((error) => {
+            console.log(error);
+        });
     }
 
     render() {
+        const dzonas = this.state.dataZonas.map((zona) => {
+            return <DataZona key={`zona-${zona.id}`} data={zona} />
+        });
         return (
-            <div className="Zonas">
+            <div className="ZonasMenu">
+                <div className="ZonaMenu-Zonas">
+                    <h4>Zonas Turísticas</h4>
+                    <div className="ZonaMenu-Data">
+                        {dzonas}
+                    </div>
+                </div>
+                <div className="ZonaMenu-Lista">
+                    <h4>Destinos</h4>
+                    <ul>
+                        <li><a href="" className="link">Ciudad de San Luis</a></li>
+                        <li><a href="" className="link">Villa Mercedes</a></li>
+                        <li><a href="" className="link">Villa de Merlo</a></li>
+                        <li><a href="" className="link">Potrero de los Funes</a></li>
+                        <li><a href="" className="link">San Francisco</a></li>
+                        <li><a href="" className="link">El Trapiche</a></li>
+                        <li><a href="" className="link">Carpintería</a></li>
+                        <li><a href="" className="link">La Carolina</a></li>
+                        <li><a href="" className="link">Nogolí</a></li>
+                        <li><a href="" className="link">San Jerónimo</a></li>
+                        <li><a href="" className="link">La Punta</a></li>
+                        <li><a href="" className="link">Los Molles</a></li>
+                        <li><a href="" className="link">Justo Daract</a></li>
+                        <li><a href="" className="link">Balde</a></li>
+                        <li><a href="" className="link">Nueva Galia</a></li>
+                    </ul>
+                </div>
+            </div>
+        );
+    }
+
+    /*
+    render() {
+        return (
+            <div className="ZonasMenu">
                 <div>
                     <div>Zonas</div>
                     <div className="zonas-data">
@@ -81,6 +154,7 @@ class Zonas extends Component {
             </div>
         );
     }
+    */
 }
 
-export default Zonas;
+export default ZonasMenu;

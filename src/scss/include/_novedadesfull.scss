@@ -1,0 +1,100 @@
+/*
+    Componente Novedadesfull.js
+*/
+
+.Novedadesfull {
+    padding-top: 160px;
+    .nf-titulo {
+        background-color: $color-uno;
+        height: 50px;
+        position: relative;
+        margin-bottom: 50px;
+        span {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: #fff;
+            color: $color-uno;
+            font-size: 3rem;
+            line-height: 3rem;
+            font-weight: 800;
+            padding: 0px 8px;
+        }
+    }
+    .nf-body {
+        width: 100%;
+        .nf-novedad {
+            display: flex;
+            .nf-novedad-left {
+                position: relative;
+                min-width: 400px;
+                img {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    padding-left: 10px;
+                }
+                span {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    padding: 8px;
+                    text-align: center;
+                    width: 340px;
+                    color: #fff;
+                    text-transform: uppercase;
+                }
+            }
+            .nf-novedad-right {
+                .nf-right-titulo {
+                    padding-left: 20px;
+                    color: #fff;
+                    h3 {
+                        text-transform: uppercase;
+                        margin-bottom: 0px;
+                    }
+                }
+                .nf-right-body {
+                    margin-bottom: 8px;
+                    p {
+                        margin-bottom: 0px;
+                        max-height: 100px;
+                        //white-space: nowrap;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        //max-width: 75ch;
+                        text-align: justify;
+                    }
+                }
+                .nf-right-btn {
+                    text-align: right;
+                    .btn-novedades {
+                        background-color: $color-uno;
+                        color: #fff;
+                        padding: 2px 8px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 990px) {
+    .Novedadesfull {
+        .nf-body {
+            .nf-novedad {
+                flex-direction: column;
+                .nf-novedad-left {
+                    position: fixed;
+                }
+            }
+
+        }
+    }
+}
+
+@media only screen and (max-width: 700px) {
+    .Novedadesfull {
+        padding-top: 180px;
+    }
+}

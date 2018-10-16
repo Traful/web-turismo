@@ -1,0 +1,45 @@
+/*
+    Mixins
+*/
+
+@mixin img-slider {
+    width: 100%;
+    height: 100vh;
+    background: {
+        position: center;
+        size: cover;
+        repeat: no-repeat;
+    }
+}
+
+//.95 .8
+@mixin degrado($opacity-start, $opacity-end) {
+    background: rgb(105,22,113);
+    background: -moz-linear-gradient(left, rgba(105,22,113,$opacity-start) 0%, rgba(190,33,93,$opacity-end) 100%);
+    background: -webkit-linear-gradient(left, rgba(105,22,113,$opacity-start) 0%,rgba(190,33,93,$opacity-end) 100%);
+    background: linear-gradient(to right, rgba(105,22,113,$opacity-start) 0%,rgba(190,33,93,$opacity-end) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#691671', endColorstr='#be215d',GradientType=1 );
+}
+
+//text-sh(1px, 1px, 1px, #000000);
+@mixin text-sh($horizontal-length, $vertical-length, $blur-radius, $shadow-color) {
+    text-shadow: $horizontal-length $vertical-length $blur-radius $shadow-color;
+}
+
+@mixin reco-zona {
+    position: relative;
+    height: 260px;
+    width: 100%;
+    cursor: pointer;
+    .cuadro-titulo {
+        p {
+            margin-block-start: 0;
+            margin-block-end: 0;
+            line-height: 1em;
+            text-transform: uppercase;
+        }
+    }
+    &:hover {
+        background-color: rgba(0,0,0, .1);
+    }
+}
