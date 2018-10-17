@@ -1,7 +1,58 @@
 /*
-    Componente Novedadesfull.js
+    Componente PZona.js
 */
 
+.ZonaDetalle-titulo {
+    display: block;
+    width: 100%;
+    height: 50px;
+    position: relative;
+    margin-bottom: 40px;
+    h3 {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        background-color: #fff;
+        text-transform: uppercase;
+        padding: 8px;
+        font-weight: bold;
+    }
+}
+
+.ZonaDetalle-Body {
+    display: grid;
+    grid-template-areas: "col0 col1 col2 col3";
+    grid-template-columns: 20px 2fr 1fr 75px;
+    grid-template-rows: auto;
+    grid-gap: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    #col0 {
+        grid-area: col0;
+    }
+    #col1 {
+        grid-area: col1;
+        div {
+            h4, h5 {
+                text-transform: uppercase;
+            }
+        }
+    }
+    #col2 {
+        grid-area: col2;
+    }
+    #col3 {
+        grid-area: col3;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        img {
+            border: 1px solid;
+        }
+    }
+}
+
+/*
 .Novedadesfull {
     padding-top: 160px;
     .nf-titulo {
@@ -81,26 +132,8 @@ $novedad-imagen-width: 400px;
             background-color: $color-uno;
             padding: 0 8px;
             color: #fff;
-            /*
-            -webkit-border-radius: 8px;
-            border-radius: 8px;
-            */
         }
     }
-    /*
-    .pie {
-        grid-area: pie;
-        display: flex;
-        justify-content: flex-start;
-        align-items: flex-end;
-        padding-left: 10px;
-        .btn-novedades {
-            background-color: $color-uno;
-            padding: 0 8px;
-            color: #fff;
-        }
-    }
-    */
 }
 
 @media only screen and (max-width: 370px) {
@@ -122,19 +155,6 @@ $novedad-imagen-width: 400px;
 }
 
 @media only screen and (max-width: 990px) {
-    /*
-    .Novedadesfull {
-        .nf-body {
-            .nf-novedad {
-                flex-direction: column;
-                .nf-novedad-left {
-                    position: fixed;
-                }
-            }
-
-        }
-    }
-    */
     .novedad-full-item {
         grid-template-areas: "titulo" "imagen" "body" "pie";
         grid-template-columns: 1fr;
@@ -144,3 +164,4 @@ $novedad-imagen-width: 400px;
         }
     }
 }
+*/
