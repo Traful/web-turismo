@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
+import { Link } from "react-router-dom";
 import axios from "axios";
 
 const DataZona = (props) => {
-    console.log()
     return(
-        <div className="ZonaMenu-Item" style={{"backgroundColor": `#${props.data.color}`}}>
-            <img src={props.data.foto} alt="Img" />
-            <span>{props.data.nombre}</span>
-        </div>
+        <Link to={`/zona/${props.data.id}`} onClick={props.oniClick}>
+            <div className="ZonaMenu-Item" style={{"backgroundColor": `#${props.data.color}`}}>
+                <img src={props.data.foto} alt="Img" />
+                <span>{props.data.nombre}</span>
+            </div>
+        </Link>
     );
 }
 
@@ -59,7 +61,7 @@ class ZonasMenu extends Component {
 
     render() {
         const dzonas = this.state.dataZonas.map((zona) => {
-            return <DataZona key={`zona-${zona.id}`} data={zona} />
+            return <DataZona key={`zona-${zona.id}`} data={zona} oniClick={this.props.onZonaClick} />
         });
         return (
             <div className="ZonasMenu">

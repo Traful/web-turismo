@@ -3,6 +3,7 @@
 # dependencies
 /node_modules
 /disenio
+/asdad
 
 # testing
 /coverage

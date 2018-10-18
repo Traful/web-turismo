@@ -1,0 +1,87 @@
+/*
+    Componente LocAlojamiento.js
+*/
+
+.Aloj-Data {
+    width: 100%;
+    //height: 250px;
+    display: grid;
+    grid-template-areas: "data-nombre data-nombre data-nombre data-nombre" "data-info data-fotos data-servicios data-tarifas" "data-redes data-redes data-redes data-redes";
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 50px auto 50px;
+    .data-nombre {
+        grid-area: data-nombre;
+        align-self: center;
+        justify-self: center;
+        text-transform: uppercase;
+        font-size: 2rem;
+        font-weight: 600;
+    }
+    .data-info {
+        grid-area: data-info;
+    }
+    .data-fotos {
+        grid-area: data-fotos;
+    }
+    .data-servicios {
+        grid-area: data-servicios;
+    }
+    .data-tarifas {
+        grid-area: data-tarifas;
+    }
+    .data-redes {
+        grid-area: data-redes;
+    }
+}
+
+/*
+$f-alto: 400px;
+$f-ancho: 50%;
+$f-perspectiva: 600;
+$f-back-color:#2D7886; //#FC0;
+$f-front-color: #80BFFF;
+$f-animation-time: .6s;
+$f-animation-type: ease;
+$f-radius: 7px;
+
+@mixin fb-style($grados, $color) {
+    position: absolute;
+    -webkit-transform: perspective( $f-perspectiva ) rotateY( $grados );
+    transform: perspective( $f-perspectiva ) rotateY( $grados );
+    background: $color;
+    width: $f-ancho - 8%;
+    height: $f-alto;
+    border-radius: $f-radius;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    transition: -webkit-transform $f-animation-time $f-animation-type 0s;
+    transition: transform $f-animation-time $f-animation-type 0s;
+}
+
+.flip3D {
+    width: $f-ancho;
+    height: $f-alto;
+    margin-bottom: 40px;
+    .flip3D-front {
+        @include fb-style(0deg, $f-front-color);
+    }
+    .flip3D-back {
+        @include fb-style(180deg, $f-back-color);
+    }
+    /*
+    &:hover {
+        .carousel {
+            display: none;
+        }
+        .flip3D-front {
+            -webkit-transform: perspective( $f-perspectiva ) rotateY( -180deg );
+            transform: perspective( $f-perspectiva ) rotateY( -180deg );
+        }
+        .flip3D-back {
+            -webkit-transform: perspective( $f-perspectiva ) rotateY( 0deg );
+            transform: perspective( $f-perspectiva ) rotateY( 0deg );
+        }
+    }
+    //
+}
+*/

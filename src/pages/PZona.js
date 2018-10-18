@@ -14,8 +14,26 @@ class Zona extends Component {
         }
     }
 
+    componentDidUpdate(prevProps, prevState) {
+        /*
+        if(prevProps == undefined) {
+        return false
+        }
+        if (this.state.id != this.props.router.params.id) {
+        this.props.dispatch(fetchProject(this.props.router.params.id))
+        this.setState({id: this.props.router.params.id})
+        }
+        */
+
+        if(this.props.match.params.id !== prevProps.match.params.id) {
+            this.componentDidMount();
+        }
+
+    }
+
     componentDidMount() {
         //verificar que el id se aun número > a 0
+        //Datos de la Zona
         var self = this;
         axios({
             method: "get",
@@ -32,6 +50,7 @@ class Zona extends Component {
             responseType: 'json'
         })
         .then((response) => {
+            console.log(response);
             if(response.data.data.count > 0) {
                 self.setState({
                     dataZona: response.data.data.registros[0]
@@ -61,7 +80,6 @@ class Zona extends Component {
             responseType: 'json'
         })
         .then((response) => {
-            console.log(response);
             if(response.data.data.count > 0) {
                 self.setState({
                     localidadesDataZona: response.data.data.registros
@@ -79,7 +97,7 @@ class Zona extends Component {
 
     render() {
         const localidades = this.state.localidadesDataZona.map((localidad) => {
-            return (<span>{localidad.ciudad} / </span>);
+            return (<Link to={`/localidad/${localidad.idciudad}`} key={`localidad-${localidad.id}`}>{localidad.ciudad} / </Link>);
         });
         return (
             <div className="Zona">
@@ -119,23 +137,26 @@ class Zona extends Component {
                         <div className="container">
                             <div className="row">
                                 <div className="col ZonaDetalle-Body">
-                                    <div id="col0">
-                                        Asd
+                                    <div id="mapasl">
+                                        <img className="img-fluid" src={`${process.env.REACT_APP_API_RECURSOS}/mapas/mini/${this.state.dataZona.mini}`} alt="SL" />
                                     </div>
-                                    <div id="col1">
+                                    <div id="texto">
                                         <p>{this.state.dataZona.descripcion}</p>
                                         <div>
                                             <h5 style={{color: `#${this.state.dataZona.color}`}}>Localidades de</h5>
                                             <h4 style={{color: `#${this.state.dataZona.color}`}}>{this.state.dataZona.nombre}</h4>
                                         </div>
                                         <div>
-                                            {localidades}
+                                            <div>
+                                                {localidades}
+                                            </div>
+                                            <div><button className="btn btn-block mt-3 text-white" style={{backgroundColor: `#${this.state.dataZona.color}`}}><i className="fas fa-file-pdf"></i> Descargar Folletería</button></div>
                                         </div>
                                     </div>
-                                    <div id="col2">
+                                    <div id="mapa">
                                         <img className="img-fluid" src={`${process.env.REACT_APP_API_RECURSOS}/mapas/${this.state.dataZona.mapa}`} alt="Mapa" />
                                     </div>
-                                    <div id="col3">
+                                    <div id="imagenes">
                                         <img className="img-fluid" style={{borderColor: `#${this.state.dataZona.color}`}} src={`${process.env.REACT_APP_API_RECURSOS}/mapas/${this.state.dataZona.mapa}`} alt="Thubmail" />
                                         <img className="img-fluid" style={{borderColor: `#${this.state.dataZona.color}`}} src={`${process.env.REACT_APP_API_RECURSOS}/mapas/${this.state.dataZona.mapa}`} alt="Thubmail" />
                                         <img className="img-fluid" style={{borderColor: `#${this.state.dataZona.color}`}} src={`${process.env.REACT_APP_API_RECURSOS}/mapas/${this.state.dataZona.mapa}`} alt="Thubmail" />
@@ -147,9 +168,6 @@ class Zona extends Component {
                                 </div>
                             </div>
                         </div>
-                        
-                        Zona: {this.props.match.params.id}
-                        <Link to="/" className="btn btn-primary">Home</Link>
                     </React.Fragment>
                 }
             </div>

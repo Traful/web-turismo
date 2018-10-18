@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-//import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import ZonasMenu from "./subcomponentes/ZonasMenu";
 
 class Menu extends Component {
@@ -10,6 +10,12 @@ class Menu extends Component {
             visibleMenu: false
         }
         this.setMenu = this.setMenu.bind(this);
+        this.closeMenu = this.closeMenu.bind(this);
+    }
+
+    closeMenu() {
+        this.setState({visibleMenu: !this.state.visibleMenu});
+        console.log("close menu");
     }
 
     setMenu(id) {
@@ -30,16 +36,17 @@ class Menu extends Component {
     render() {
         var submenu = null;
         if(this.state.idSubMenu === 1) {
-            submenu = <ZonasMenu />;
+            submenu = <ZonasMenu onZonaClick={this.closeMenu} />;
         }
         return (
             <div className="Menu">
                 <div className="container-fluid menu-ul animated bounceInDown delay-2s">
                     <ul>
-                        <li><a href="javascript:void(0);" onClick={(e) => this.setMenu(1, e)}>¿QUÉ VISITAMOS?</a></li>
-                        <li><a href="javascript:void(0);" onClick={(e) => this.setMenu(2, e)}>¿QUÉ HACEMOS?</a></li>
-                        <li><a href="javascript:void(0);" onClick={(e) => this.setMenu(3, e)}>¡A PLANIFICAR!</a></li>
-                        <li><a href="javascript:void(0);" onClick={(e) => this.setMenu(4, e)}>NOSOTROS</a></li>
+                        <li><Link to="/" className="link-menu"><i className="fas fa-home"></i></Link></li>
+                        <li><span className="link-menu" onClick={(e) => this.setMenu(1, e)}>¿QUÉ VISITAMOS?</span></li>
+                        <li><span className="link-menu" onClick={(e) => this.setMenu(2, e)}>¿QUÉ HACEMOS?</span></li>
+                        <li><span className="link-menu" onClick={(e) => this.setMenu(3, e)}>¡A PLANIFICAR!</span></li>
+                        <li><span className="link-menu" onClick={(e) => this.setMenu(4, e)}>NOSOTROS</span></li>
                     </ul>
                 </div>
                 <div className="logo">
