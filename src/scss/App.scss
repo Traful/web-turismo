@@ -27,6 +27,12 @@
 @import "include/localidaddetalles";
 //Componente LocAlojamiento.js
 @import "include/localojamiento";
+//Componente PAtractivo.js
+@import "include/atractivo";
+
+//Componente Footer.js
+@import "include/footer";
+
 
 @media only screen and (max-width: 880px) {
     .menu {

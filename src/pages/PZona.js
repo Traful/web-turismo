@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 import axios from "axios";
 
+import atractivosData from '../data/atractivos';
+
 import Menu from "../components/Menu";
 
 class Zona extends Component {
@@ -10,25 +12,16 @@ class Zona extends Component {
         this.state = {
             loading: true,
             dataZona: {},
-            localidadesDataZona: []
+            localidadesDataZona: [],
+            carousel: [],
+            atractivos: []
         }
     }
 
     componentDidUpdate(prevProps, prevState) {
-        /*
-        if(prevProps == undefined) {
-        return false
-        }
-        if (this.state.id != this.props.router.params.id) {
-        this.props.dispatch(fetchProject(this.props.router.params.id))
-        this.setState({id: this.props.router.params.id})
-        }
-        */
-
         if(this.props.match.params.id !== prevProps.match.params.id) {
             this.componentDidMount();
         }
-
     }
 
     componentDidMount() {
@@ -50,7 +43,6 @@ class Zona extends Component {
             responseType: 'json'
         })
         .then((response) => {
-            console.log(response);
             if(response.data.data.count > 0) {
                 self.setState({
                     dataZona: response.data.data.registros[0]
@@ -83,6 +75,51 @@ class Zona extends Component {
             if(response.data.data.count > 0) {
                 self.setState({
                     localidadesDataZona: response.data.data.registros
+                }, () => {
+                    /*
+                    console.log(self.state.localidadesDataZona);
+                    //Atractivos de la Zona
+                    var atractivos = atractivosData.map((a) => {
+                        if(self.state.localidadesDataZona.filter((l) => {
+                            return parseInt(l.idciudad, 10) === parseInt(a.id, 10);
+                        }).length > 0) {
+                            return (a.nombre);
+                        } else {
+                            return null;
+                        }
+                    });
+                    console.log(atractivos);
+                    */
+                    //1 Foto de cada atractivo para el carousel
+                    console.log(atractivosData);
+                    var activo = false;
+                    var fotos = atractivosData.map((a, index) => {
+                        if(a.fotos.length > 0) {
+                            /*
+                            let index_foto = Math.random() * (a.fotos.length - 0) + 0; // Retorna un número aleatorio entre min (incluido) y max (excluido)
+                            console.log(index_foto);
+                            */
+                            let estilo = {
+                                backgroundImage: `url(${process.env.REACT_APP_API_RECURSOS}/atractivos/${a.fotos[0]})`,
+                                backgroundSize: "cover",
+                                backgroundPosition: "center",
+                                backgroundRepeat: "no-repeat"
+                            };
+                            if(!activo) {
+                                activo = true;
+                                return (
+                                    <div key={`caro-${a.id}-${index}`} className="carousel-item active" style={estilo}></div>
+                                );
+                            } else {
+                                return (
+                                    <div key={`caro-${a.id}-${index}`} className="carousel-item" style={estilo}></div>
+                                );
+                            }
+                        } else {
+                            return null;
+                        }
+                    });
+                    self.setState({carousel: fotos});
                 });
             } else {
                 //Error no se enocntró el id
@@ -96,6 +133,7 @@ class Zona extends Component {
     }
 
     render() {
+        //console.log(atractivosData);
         const localidades = this.state.localidadesDataZona.map((localidad) => {
             return (<Link to={`/localidad/${localidad.idciudad}`} key={`localidad-${localidad.id}`}>{localidad.ciudad} / </Link>);
         });
@@ -109,13 +147,7 @@ class Zona extends Component {
                         <div className="menu-y-slider">
                             <div id="carouselExampleIndicators" className="carousel slide" data-ride="carousel">
                                 <div className="carousel-inner">
-                                    <div className="carousel-item img-slider-1 active"></div>
-                                    <div className="carousel-item img-slider-2"></div>
-                                    <div className="carousel-item img-slider-3"></div>
-                                    <div className="carousel-item img-slider-4"></div>
-                                    <div className="carousel-item img-slider-5"></div>
-                                    <div className="carousel-item img-slider-6"></div>
-                                    <div className="carousel-item img-slider-7"></div>
+                                    {this.state.carousel}
                                 </div>
                                 <a className="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
                                     <span className="carousel-control-prev-icon" aria-hidden="true"></span>

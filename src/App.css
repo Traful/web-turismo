@@ -8,6 +8,8 @@
 */
 body {
   font-family: "Dosis", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   min-width: 360px;
 }
 
@@ -1251,7 +1253,7 @@ body {
   display: grid;
   grid-template-areas: "video texto" "mapa imperdibles";
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: auto;
+  grid-template-rows: auto auto;
   grid-gap: 30px;
   padding-left: 20px;
   padding-right: 20px;
@@ -1273,8 +1275,54 @@ body {
 }
 .ZonaLocalidad-Body #imperdibles {
   grid-area: imperdibles;
+  position: relative;
+}
+.ZonaLocalidad-Body #imperdibles .imp-titulo {
+  position: absolute;
+  margin-top: -20px;
+  padding: 0 20px 0 5px;
+  margin-left: 20px;
+  background-color: #fff;
+}
+.ZonaLocalidad-Body #imperdibles .imp-titulo h3 {
+  text-transform: uppercase;
+  color: #fff;
+  font-weight: bold;
+}
+.ZonaLocalidad-Body #imperdibles .imp-body-wrap {
+  margin: 40px 20px;
+}
+.ZonaLocalidad-Body #imperdibles .imp-body-wrap a {
+  text-decoration: none;
+  color: #fff;
+}
+.ZonaLocalidad-Body #imperdibles .imp-body-wrap a .imp-body {
+  padding: 8px;
+  cursor: pointer;
+}
+.ZonaLocalidad-Body #imperdibles .imp-body-wrap a .imp-body h5 {
+  text-transform: uppercase;
+}
+.ZonaLocalidad-Body #imperdibles .imp-body-wrap a .imp-body p {
+  max-height: 145px;
+  overflow: hidden;
+}
+.ZonaLocalidad-Body #imperdibles .imp-body-wrap a .imp-body:hover {
+  background-color: rgba(0, 0, 0, 0.3);
 }
 
+@media only screen and (max-width: 770px) {
+  .ZonaLocalidad-Body {
+    grid-template-areas: "video" "texto" "mapa" "imperdibles";
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    /*
+    grid-gap: 30px;
+    padding-left: 20px;
+    padding-right: 20px;
+    */
+  }
+}
 /*
     Componente LocAlojamiento.js
 */
@@ -1360,6 +1408,188 @@ $f-radius: 7px;
     //
 }
 */
+/*
+    Componente PAtractivo.js
+*/
+.Atractivo-data {
+  display: grid;
+  grid-template-areas: "atractivo-texto atractivo-fotos" "atractivo-texto ." "atractivo-texto atractivo-info";
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: auto;
+  grid-gap: 20px;
+}
+.Atractivo-data .atractivo-texto {
+  grid-area: atractivo-texto;
+}
+.Atractivo-data .atractivo-fotos {
+  grid-area: atractivo-fotos;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  background-color: #722789;
+  padding: 20px 20px;
+}
+.Atractivo-data .atractivo-fotos img {
+  width: 200px;
+  height: 150px;
+  object-fit: cover;
+  margin: 8px;
+  border: 1px solid #fff;
+}
+.Atractivo-data .atractivo-info {
+  grid-area: atractivo-info;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.Atractivo-data .atractivo-info span {
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.Atractivo-data .atractivo-info span i {
+  margin-right: 8px;
+  color: #722789;
+}
+.Atractivo-data .atractivo-info ul li {
+  text-transform: uppercase;
+}
+
+.Novedades {
+  padding-left: 10px;
+}
+.Novedades .novedades-body {
+  width: 100%;
+  height: 200px;
+  position: absolute;
+  overflow: hidden;
+  position: relative;
+  top: 0;
+  left: 0;
+}
+.Novedades .novedades-body .novedades-carousel {
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 20px;
+  height: 100%;
+  display: block;
+  background-color: #722789;
+  padding-left: 100px;
+  padding-top: 20px;
+  color: #fff;
+}
+.Novedades .novedades-body .novedades-carousel .carousel-item-js {
+  height: auto;
+  display: flex;
+}
+.Novedades .novedades-body .novedades-carousel .carousel-item-js img {
+  width: 160px;
+  height: 160px;
+  object-fit: cover;
+  margin-right: 25px;
+}
+.Novedades .novedades-body .novedades-carousel .carousel-item-js div {
+  padding-right: 10px;
+}
+.Novedades .novedades-body .novedades-carousel .carousel-item-js div p {
+  margin-block-start: 0px;
+  margin-block-end: 0px;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+}
+.Novedades .novedades-body .novedades-carousel .carousel-item-js div p:nth-child(1) {
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  line-height: 1.8rem;
+  font-weight: 800;
+}
+.Novedades .novedades-body .novedades-carousel .carousel-item-js div p:nth-child(2) {
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  line-height: 1.5rem;
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+.Novedades .novedades-body .novedades-titulo {
+  cursor: pointer;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 0;
+  background-color: #fff;
+  padding: 10px 10px 10px 0;
+  position: absolute;
+}
+.Novedades .novedades-body .novedades-titulo p {
+  text-transform: uppercase;
+  margin: 0;
+  padding: 0;
+  text-align: right;
+  width: 70px;
+  font-size: 2rem;
+  line-height: 2rem;
+  font-weight: 800;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  color: #722789;
+}
+
+/*
+    Componente Footer.js
+*/
+.Footer {
+  padding: 20px 40px;
+  width: 100%;
+  background: #691671;
+  background: -moz-linear-gradient(left, rgba(105, 22, 113, 0.95) 0%, rgba(190, 33, 93, 0.8) 100%);
+  background: -webkit-linear-gradient(left, rgba(105, 22, 113, 0.95) 0%, rgba(190, 33, 93, 0.8) 100%);
+  background: linear-gradient(to right, rgba(105, 22, 113, 0.95) 0%, rgba(190, 33, 93, 0.8) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#691671", endColorstr="#be215d",GradientType=1 );
+  color: #fff;
+  display: grid;
+  grid-template-areas: "logom ministerio social institucional";
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 1fr;
+  justify-items: center;
+  align-items: center;
+}
+.Footer .logom {
+  grid-area: logom;
+}
+.Footer .logom img {
+  max-width: 200px;
+}
+.Footer .ministerio {
+  grid-area: ministerio;
+  text-align: center;
+}
+.Footer .ministerio p {
+  margin-bottom: 0px;
+  margin-block-start: 0px;
+  margin-block-end: 0px;
+}
+.Footer .social {
+  grid-area: social;
+  text-align: center;
+}
+.Footer .social p {
+  margin-bottom: 0px;
+  margin-block-start: 0px;
+  margin-block-end: 0px;
+}
+.Footer .institucional {
+  grid-area: institucional;
+}
+
+@media only screen and (max-width: 920px) {
+  .Footer {
+    grid-template-areas: "logom" "ministerio" "social" "institucional";
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    grid-row-gap: 20px !important;
+  }
+}
 @media only screen and (max-width: 880px) {
   .menu {
     padding: 0 1rem;

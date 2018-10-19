@@ -12,6 +12,12 @@
     }
 }
 
+@mixin resetP() {
+    margin-bottom: 0px;
+    margin-block-start: 0px;
+    margin-block-end: 0px;
+}
+
 //.95 .8
 @mixin degrado($opacity-start, $opacity-end) {
     background: rgb(105,22,113);
