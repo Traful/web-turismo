@@ -25,7 +25,7 @@ class Recorridos extends Component {
                     <Link to="zona/4">
                         <div id="sierras">
                             <div className="cuadro-color"></div>
-                            <img src={`${process.env.REACT_APP_API_RECURSOS}/recursos/zonas/sierras.jpg`} className="thumbnail" alt="" />
+                            <img src={`${process.env.REACT_APP_API_RECURSOS}/recursos/zonas/1_4_20181020005103.jpg`} className="thumbnail" alt="" />
                             <div className="cuadro-titulo">
                                 <p>Sierras</p>
                                 <p>Centrales</p>
@@ -55,7 +55,7 @@ class Recorridos extends Component {
                     <Link to="zona/1">
                         <div id="valle">
                             <div className="cuadro-color"></div>
-                            <img src={`${process.env.REACT_APP_API_RECURSOS}/recursos/zonas/valle.jpg`} className="thumbnail" alt="" />
+                            <img src={`${process.env.REACT_APP_API_RECURSOS}/recursos/zonas/1_1_20181020005650.jpg`} className="thumbnail" alt="" />
                             <div className="cuadro-titulo">
                                 <p>Valle del Conlara</p>
                                 <p>y San Martín</p>
@@ -65,7 +65,7 @@ class Recorridos extends Component {
                     <Link to="zona/9">
                         <div id="villa">
                             <div className="cuadro-color"></div>
-                            <img src={`${process.env.REACT_APP_API_RECURSOS}/recursos/zonas/villa.jpg`} className="thumbnail" alt="" />
+                            <img src={`${process.env.REACT_APP_API_RECURSOS}/recursos/zonas/1_9_20181020005804.jpg`} className="thumbnail" alt="" />
                             <div className="cuadro-titulo">
                                 <p>Villa Mercedes</p>
                                 <p>y El Morro</p>
@@ -95,7 +95,7 @@ class Recorridos extends Component {
                     <Link to="zona/12">
                         <div id="termas">
                             <div className="cuadro-color"></div>
-                            <img src={`${process.env.REACT_APP_API_RECURSOS}/recursos/zonas/termas.jpg`} className="thumbnail" alt="" />
+                            <img src={`${process.env.REACT_APP_API_RECURSOS}/recursos/zonas/1_12_20181020005540.jpg`} className="thumbnail" alt="" />
                             <div className="cuadro-titulo">
                                 <p>Termas y</p>
                                 <p>Salinas</p>
