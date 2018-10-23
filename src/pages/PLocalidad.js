@@ -31,6 +31,10 @@ class PLocalidad extends Component {
             imperdibles: []
         };
     }
+
+    componentWillUpdate() {
+        //this.componentDidMount();
+    }
     
     componentDidMount() {
         var self = this;

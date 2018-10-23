@@ -13,6 +13,24 @@ const DataZona = (props) => {
     );
 }
 
+/*
+<li><Link to="/localidad/6" className="link">Ciudad de San Luis</Link></li>
+<li><Link to="/localidad/33" className="link">Villa Mercedes</Link></li>
+<li><Link to="/localidad/31" className="link">Villa de Merlo</Link></li>
+<li><Link to="/localidad/22" className="link">Potrero de los Funes</Link></li>
+<li><Link to="/localidad/25" className="link">San Francisco</Link></li>
+<li><Link to="/localidad/9" className="link">El Trapiche</Link></li>
+<li><Link to="/localidad/5" className="link">Carpintería</Link></li>
+<li><Link to="/localidad/47" className="link">La Carolina</Link></li>
+<li><Link to="/localidad/18" className="link">Nogolí</Link></li>
+<li><Link to="/localidad/26" className="link">San Jerónimo</Link></li>
+<li><Link to="/localidad/13" className="link">La Punta</Link></li>
+<li><Link to="/localidad/15" className="link">Los Molles</Link></li>
+<li><Link to="/localidad/61" className="link">Justo Daract</Link></li>
+<li><Link to="/localidad/2" className="link">Balde</Link></li>
+<li><Link to="/localidad/19" className="link">Nueva Galia</Link></li>
+*/
+
 class ZonasMenu extends Component {
     constructor(props) {
         super(props);
@@ -74,21 +92,21 @@ class ZonasMenu extends Component {
                 <div className="ZonaMenu-Lista">
                     <h4>Destinos</h4>
                     <ul>
-                        <li><a href="" className="link">Ciudad de San Luis</a></li>
-                        <li><a href="" className="link">Villa Mercedes</a></li>
-                        <li><a href="" className="link">Villa de Merlo</a></li>
-                        <li><a href="" className="link">Potrero de los Funes</a></li>
-                        <li><a href="" className="link">San Francisco</a></li>
-                        <li><a href="" className="link">El Trapiche</a></li>
-                        <li><a href="" className="link">Carpintería</a></li>
-                        <li><a href="" className="link">La Carolina</a></li>
-                        <li><a href="" className="link">Nogolí</a></li>
-                        <li><a href="" className="link">San Jerónimo</a></li>
-                        <li><a href="" className="link">La Punta</a></li>
-                        <li><a href="" className="link">Los Molles</a></li>
-                        <li><a href="" className="link">Justo Daract</a></li>
-                        <li><a href="" className="link">Balde</a></li>
-                        <li><a href="" className="link">Nueva Galia</a></li>
+                        <li><a href="#" className="link">Ciudad de San Luis</a></li>
+                        <li><a href="#" className="link">Villa Mercedes</a></li>
+                        <li><a href="#" className="link">Villa de Merlo</a></li>
+                        <li><a href="#" className="link">Potrero de los Funes</a></li>
+                        <li><a href="#" className="link">San Francisco</a></li>
+                        <li><a href="#" className="link">El Trapiche</a></li>
+                        <li><a href="#" className="link">Carpintería</a></li>
+                        <li><a href="#" className="link">La Carolina</a></li>
+                        <li><a href="#" className="link">Nogolí</a></li>
+                        <li><a href="#" className="link">San Jerónimo</a></li>
+                        <li><a href="#" className="link">La Punta</a></li>
+                        <li><a href="#" className="link">Los Molles</a></li>
+                        <li><a href="#" className="link">Justo Daract</a></li>
+                        <li><a href="#" className="link">Balde</a></li>
+                        <li><a href="#" className="link">Nueva Galia</a></li>
                     </ul>
                 </div>
             </div>
