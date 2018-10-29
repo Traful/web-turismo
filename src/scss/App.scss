@@ -1,8 +1,7 @@
 @import "include/config";
-@import "include/init";
 @import "include/colors";
 @import "include/mixins";
-
+@import "include/init";
 
 //Componente Menu.js
 @import "include/menu";
@@ -29,6 +28,8 @@
 @import "include/localojamiento";
 //Componente PAtractivo.js
 @import "include/atractivo";
+//Componente PListadoAtractivos
+@import "include/listadoatractivos";
 
 //Componente Footer.js
 @import "include/footer";

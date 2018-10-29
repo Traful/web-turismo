@@ -10,12 +10,13 @@ class Footer extends Component {
 				<div className="ministerio">
 					<h3>Ministerio de Turismo</h3>
 					<p>Av. Illia 35, esq. Junín</p>
-					<p>(0266) 4423479 / 4423957</p>
+					<p><a href="tel:+549266442379">(266) 4423479</a></p>
+					<p><a href="tel:+549266442357">(266) 4423957</a></p>
 					<p>San Luis, Capital</p>
 				</div>
 				<div className="social">
 					<h3>Seguinos</h3>
-					<p>Ministerio de Turismo San Luis</p>
+					<p><i className="fab fa-facebook-square"></i> <a href="https://www.facebook.com/turismodesanluis/" target="_blank" rel="noopener noreferrer">Ministerio de Turismo San Luis</a></p>
 					<p>Turismo San Luis</p>
 					<p>@MintuSLU</p>
 					<p>Ministeariotursl</p>

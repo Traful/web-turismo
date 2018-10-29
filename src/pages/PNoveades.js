@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-
-import Menu from "../components/Menu";
 import Novedadesfull from "../components/Novedadesfull";
 
 class PNoveades extends Component {
@@ -23,7 +21,6 @@ class PNoveades extends Component {
                     <div>Cargando...</div>
                     :
                     <React.Fragment>
-                        <Menu />
                         <Novedadesfull />
                     </React.Fragment>
                 }

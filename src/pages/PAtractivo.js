@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-//import { Link } from "react-router-dom";
-//import axios from "axios";
-/*
+import React, { Component } from "react";
+import { Consumer } from "../context";
+import axios from "axios";
 import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-maps";
+
 const MyMapComponent = withScriptjs(withGoogleMap((props) =>
   <GoogleMap
     defaultZoom={10}
@@ -11,73 +11,114 @@ const MyMapComponent = withScriptjs(withGoogleMap((props) =>
     {props.isMarkerShown && <Marker position={{ lat: parseFloat(props.lat, 10), lng: parseFloat(props.lon, 10) }} />}
   </GoogleMap>
 ));
-*/
-
-import Menu from "../components/Menu";
-import atractivosData from '../data/atractivos';
 
 class PAtractivo extends Component {
     constructor(props) {
         super(props);
         this.state = {
             loading: true,
-            dato: {
-                fotos: [],
-                horarios: []
-            }
+            id: 0,
+            dataAtractivo: {
+                color: "722789"
+            },
+            carousel: [],
+            fotos: []
         };
+        this.getData = this.getData.bind(this);
+    }
+
+    getData() {
+        var token = this.context.token;
+        var self = this;
+        //Datos del Atractivo
+        axios({
+            method: "get",
+            headers: {
+                "Authorization": token
+            },
+            url: `${process.env.REACT_APP_API}/atractivo/${self.state.id}`,
+            responseType: 'json'
+        })
+        .then((response) => {
+            if(response.data.data.count > 0) {
+                self.setState({
+                    dataAtractivo: response.data.data.registros[0]
+                }, () => {
+                    //Imagenes del Atractivo
+                    axios({
+                        method: "get",
+                        headers: {
+                            "Authorization": token
+                        },
+                        url: `${process.env.REACT_APP_API}/atractivo/${self.state.id}/imagenes`,
+                        responseType: 'json'
+                    })
+                    .then((response) => {
+                        if(response.data.data.count > 0) {
+                            let activo = false;
+                            let carousel = response.data.data.registros.map((a, index) => {
+                                if(a.imagen === "default.jpg") {
+                                    return null;
+                                }
+                                let estilo = {
+                                    backgroundImage: `url(${process.env.REACT_APP_API_RECURSOS}/atractivos/${a.imagen})`,
+                                    backgroundSize: "cover",
+                                    backgroundPosition: "center",
+                                    backgroundRepeat: "no-repeat"
+                                };
+                                if(!activo) {
+                                    activo = true;
+                                    return (
+                                        <div key={`caro-${index}`} className="carousel-item active" style={estilo}>
+                                            <h5 className="pd-top">{self.state.dataAtractivo.nombre}</h5>
+                                        </div>
+                                    );
+                                } else {
+                                    return (
+                                        <div key={`caro-${index}`} className="carousel-item" style={estilo}>
+                                            <h5 className="pd-top">{self.state.dataAtractivo.nombre}</h5>
+                                        </div>
+                                    );
+                                }
+                            });
+                            let fotos = response.data.data.registros.map((a, index) => {
+                                return(
+                                    <img key={`img-atr-${a.id}`} className="img-fluid" src={`${process.env.REACT_APP_API_RECURSOS}/atractivos/${a.imagen}`} alt="Img" />
+                                );
+                            });
+                            self.setState({
+                                carousel: carousel,
+                                fotos: fotos
+                            });
+                        } else {
+                            //Error no se enocntró el id
+                        }
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                    });
+                });
+            } else {
+                //Error no se enocntró el id
+            }
+        })
+        .catch((error) => {
+            console.log(error);
+        });
+        self.setState({loading: false});
     }
     
     componentDidMount() {
-        var dato = atractivosData.filter((a, index) => {
-            if(parseInt(a.id, 10) === parseInt(this.props.match.params.id, 10)) {
-                return true;
-            } else {
-                return false;
-            }
-        });
-        dato = dato[0];
-        //Carousel
-        var activo = false;
-        var fotos = [];
-        if(dato.fotos.length > 0) {
-            fotos = dato.fotos.map((f, index) => {
-                let estilo = {
-                    backgroundImage: `url(${process.env.REACT_APP_API_RECURSOS}/atractivos/${f})`,
-                    backgroundSize: "cover",
-                    backgroundPosition: "center",
-                    backgroundRepeat: "no-repeat"
-                };
-                if(!activo) {
-                    activo = true;
-                    return (
-                        <div key={`caro-${f}-${index}`} className="carousel-item active" style={estilo}></div>
-                    );
-                } else {
-                    return (
-                        <div key={`caro-${f}-${index}`} className="carousel-item" style={estilo}></div>
-                    );
-                }
-            });
-        }
         this.setState({
-            carousel: fotos,
-            dato: dato,
-            loading: false
+            id: this.props.match.params.id
+        }, () => {
+            this.getData();
         });
     }
 
     render() {
-        const atractivo_fotos = this.state.dato.fotos.map((f, index) => {
-            return <img key={`img-${index}`} src={`${process.env.REACT_APP_API_RECURSOS}/atractivos/${f}`} alt="foto" />
-        });
-        var buffer_horarios = [];
-        for(var key in this.state.dato.horarios){
-            buffer_horarios.push(`${key}: ${this.state.dato.horarios[key]}`);
-        }
-        const atractivo_horarios = buffer_horarios.map((f, index) => {
-            return <li key={`hor-${index}`}>{f}</li>;
-        });
+        const carousel = this.state.carousel;
+        const fotos = this.state.fotos;
         return (
             <div className="Atractivo">
                 {
@@ -88,7 +129,7 @@ class PAtractivo extends Component {
                         <div className="menu-y-slider">
                             <div id="carouselExampleIndicators" className="carousel slide" data-ride="carousel">
                                 <div className="carousel-inner">
-                                    {this.state.carousel}
+                                    {carousel}
                                 </div>
                                 <a className="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
                                     <span className="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -102,34 +143,55 @@ class PAtractivo extends Component {
                                     <h1 className="mb-5">Atractivo Turístico</h1>
                                 </div>
                             </div>
-                            <Menu />
                         </div>
-                        <div className="ZonaLocalidad-titulo">
-                            <h3>{this.state.dato.nombre}</h3>
+                        <div className="ZonaLocalidad-titulo" style={{backgroundColor: `#${this.state.dataAtractivo.color}`}}>
+                            <h3 style={{color: `#${this.state.dataAtractivo.color}`}}>{this.state.dataAtractivo.nombre}</h3>
                         </div>
+                        
                         <div className="container">
                             <div className="row">
                                 <div className="col">
                                     <div className="Atractivo-data">
-                                        <div className="atractivo-texto">{this.state.dato.descripcion}
+                                        <div className="atractivo-texto">
+                                            {this.state.dataAtractivo.descripcion}
                                         </div>
                                         <div className="atractivo-fotos">
-                                            {atractivo_fotos}
+                                            {fotos}
+                                        </div>
+                                        <div className="atractivo-ubicacion">
+                                            <span><i className="fas fa-map-marker"></i> Ubicación</span>
+                                            <div id="mapa-atr" style={{width: "100%"}}>
+                                                <MyMapComponent
+                                                    isMarkerShown
+                                                    googleMapURL="//maps.googleapis.com/maps/api/js?key=AIzaSyCt5PFk10D5qCsCRfmzvusWFhe6MHq9t-Y"
+                                                    loadingElement={<div style={{ height: `100%` }} />}
+                                                    containerElement={<div style={{ height: `400px` }} />}
+                                                    mapElement={<div style={{ height: `100%` }} />}
+                                                    lat={this.state.dataAtractivo.latitud}
+                                                    lon={this.state.dataAtractivo.longitud}
+                                                />
+                                            </div>
+                                            <div className="d-flex justify-content-center p-2" style={{width: "100%"}}>
+                                                <span>{this.state.dataAtractivo.latitud} {this.state.dataAtractivo.longitud}</span>
+                                            </div>
                                         </div>
                                         <div className="atractivo-info">
-                                            <span><i className="fas fa-map-marker"></i> Ubicacion</span>
-                                            <span>{this.state.dato.localidad}</span>
-                                            <span>{this.state.dato.latitud} {this.state.dato.longitud}</span>
                                             <span><i className="fas fa-clock"></i> Horarios</span>
                                             <ul>
-                                                {atractivo_horarios}
+                                                <li>Lunes: {this.state.dataAtractivo.lunes}</li>
+                                                <li>Martes: {this.state.dataAtractivo.lunes}</li>
+                                                <li>Miércoles: {this.state.dataAtractivo.lunes}</li>
+                                                <li>Jueves: {this.state.dataAtractivo.lunes}</li>
+                                                <li>Viernes: {this.state.dataAtractivo.lunes}</li>
+                                                <li>Sábado: {this.state.dataAtractivo.lunes}</li>
+                                                <li>Domingo: {this.state.dataAtractivo.lunes}</li>
                                             </ul>
-                                            <span><i className="fas fa-dollar-sign"></i> Cósto: $0</span>
+                                            <span><i className="fas fa-dollar-sign"></i> Cósto: $ {this.state.dataAtractivo.costo}</span>
                                             <span><i className="fas fa-user"></i> Contacto</span>
-                                            <span className="pr-4">Domicilio: {this.state.dato.domicilio}</span>
-                                            <span className="pr-4">Tel./Cel.: +54 9 {this.state.dato.telefono}</span>
-                                            <span className="pr-4">Email: {this.state.dato.mail}</span>
-                                            <span className="pr-4">Web: {this.state.dato.web}</span>
+                                            <span className="pr-4">Domicilio: {this.state.dataAtractivo.domicilio}</span>
+                                            <span className="pr-4">Tel./Cel.: +54 9 {this.state.dataAtractivo.telefono}</span>
+                                            <span className="pr-4">Email: {this.state.dataAtractivo.mail}</span>
+                                            <span className="pr-4">Web: {this.state.dataAtractivo.web}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -144,5 +206,7 @@ class PAtractivo extends Component {
         );
     }
 }
+
+PAtractivo.contextType = Consumer;
 
 export default PAtractivo;

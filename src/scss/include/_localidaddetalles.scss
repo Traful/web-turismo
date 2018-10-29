@@ -22,9 +22,9 @@
 
 .ZonaLocalidad-Body {
     display: grid;
-    grid-template-areas: "video texto" "mapa imperdibles";
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto auto;
+    grid-template-areas: "video texto" "atractivos texto" "mapa imperdibles";
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto;
     grid-gap: 30px;
     padding-left: 20px;
     padding-right: 20px;
@@ -33,11 +33,40 @@
     }
     #texto {
         grid-area: texto;
-        align-self: center;
+        align-self: flex-start;
         justify-self: center;
         p {
             font-style: italic;
             font-size: 1.3rem;
+        }
+    }
+    #atractivos {
+        grid-area: atractivos;
+        .all-link {
+            cursor: pointer;
+            color: #fff;
+            display: grid;
+            grid-template-areas: "al-nombre al-boton" "al-texto al-boton";
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            grid-template-rows: auto;
+            padding-left: 8px;
+            -webkit-border-radius: 8px;
+            border-radius: 8px;
+            width: fit-content;
+            .al-nombre {
+                grid-area: al-nombre;
+                font-size: 1.4rem;
+            }
+            .al-texto {
+                grid-area: al-texto;
+                font-size: 1.4rem;
+            }
+            .al-boton {
+                grid-area: al-boton;
+                align-self: center;
+                font-size: 2rem;
+                padding-left: 12px;
+            }
         }
     }
     #mapa {
@@ -85,7 +114,7 @@
 
 @media only screen and (max-width: 770px) {
     .ZonaLocalidad-Body {
-        grid-template-areas: "video" "texto" "mapa" "imperdibles";
+        grid-template-areas: "video" "texto" "atractivos" "mapa" "imperdibles";
         grid-template-columns: 1fr;
         grid-template-rows: auto;
         /*

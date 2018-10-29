@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-
-import Menu from "../components/Menu";
 import Recorridos from "../components/Recorridos";
 import Descarga from "../components/Descarga";
 import Novedades from "../components/Novedades";
@@ -49,7 +47,6 @@ class Home extends Component {
                                     <span>Viví experiencias únicas</span>
                                 </div>
                             </div>
-                            <Menu />
                         </div>
                         <Recorridos />
                         <Descarga />
