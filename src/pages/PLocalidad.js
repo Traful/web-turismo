@@ -2,25 +2,7 @@ import React, { Component } from "react";
 import { Consumer } from "../context";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-maps";
-
-/*
-import LocAlojamiento from "../components/subcomponentes/LocAlojamiento";
-import atractivosData from '../data/atractivos';
-*/
-
-const MyMapComponent = withScriptjs(withGoogleMap((props) =>
-  <GoogleMap
-    defaultZoom={10}
-    defaultCenter={{ lat: parseFloat(props.lat, 10), lng: parseFloat(props.lon, 10) }}
-  >
-    {props.isMarkerShown && <Marker position={{ lat: parseFloat(props.lat, 10), lng: parseFloat(props.lon, 10) }} />}
-  </GoogleMap>
-));
-    
-
-//<MyMapComponent isMarkerShown />// Map with a Marker
-//<MyMapComponent isMarkerShown={false} />// Just only Map
+import GoogleMap from "../components/subcomponentes/GoogleMap";
 
 class PLocalidad extends Component {
     constructor(props) {
@@ -211,15 +193,7 @@ class PLocalidad extends Component {
                                             </Link>
                                         </div>
                                         <div id="mapa">
-                                            <MyMapComponent
-                                                isMarkerShown
-                                                googleMapURL="//maps.googleapis.com/maps/api/js?key=AIzaSyCt5PFk10D5qCsCRfmzvusWFhe6MHq9t-Y"
-                                                loadingElement={<div style={{ height: `100%` }} />}
-                                                containerElement={<div style={{ height: `400px` }} />}
-                                                mapElement={<div style={{ height: `100%` }} />}
-                                                lat={this.state.dataLocalidad.latitud}
-                                                lon={this.state.dataLocalidad.longitud}
-                                            />
+                                            <GoogleMap lat={this.state.dataLocalidad.latitud} lng={this.state.dataLocalidad.longitud} zoom="10" gwidth="100%" gheight="400px" />
                                         </div>
                                         <div id="imperdibles" style={{backgroundColor: `#${this.state.dataLocalidad.color}`}}>
                                             <div className="imp-titulo">

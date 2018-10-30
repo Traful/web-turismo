@@ -1,16 +1,7 @@
 import React, { Component } from "react";
 import { Consumer } from "../context";
 import axios from "axios";
-import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-maps";
-
-const MyMapComponent = withScriptjs(withGoogleMap((props) =>
-  <GoogleMap
-    defaultZoom={10}
-    defaultCenter={{ lat: parseFloat(props.lat, 10), lng: parseFloat(props.lon, 10) }}
-  >
-    {props.isMarkerShown && <Marker position={{ lat: parseFloat(props.lat, 10), lng: parseFloat(props.lon, 10) }} />}
-  </GoogleMap>
-));
+import GoogleMap from "../components/subcomponentes/GoogleMap";
 
 class PAtractivo extends Component {
     constructor(props) {
@@ -161,15 +152,7 @@ class PAtractivo extends Component {
                                         <div className="atractivo-ubicacion">
                                             <span><i className="fas fa-map-marker"></i> Ubicación</span>
                                             <div id="mapa-atr" style={{width: "100%"}}>
-                                                <MyMapComponent
-                                                    isMarkerShown
-                                                    googleMapURL="//maps.googleapis.com/maps/api/js?key=AIzaSyCt5PFk10D5qCsCRfmzvusWFhe6MHq9t-Y"
-                                                    loadingElement={<div style={{ height: `100%` }} />}
-                                                    containerElement={<div style={{ height: `400px` }} />}
-                                                    mapElement={<div style={{ height: `100%` }} />}
-                                                    lat={this.state.dataAtractivo.latitud}
-                                                    lon={this.state.dataAtractivo.longitud}
-                                                />
+                                                <GoogleMap lat={this.state.dataAtractivo.latitud} lng={this.state.dataAtractivo.longitud} zoom="10" gwidth="100%" gheight="400px" />
                                             </div>
                                             <div className="d-flex justify-content-center p-2" style={{width: "100%"}}>
                                                 <span>{this.state.dataAtractivo.latitud} {this.state.dataAtractivo.longitud}</span>
@@ -196,9 +179,6 @@ class PAtractivo extends Component {
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div>
-                            Atractivo: {this.props.match.params.id}
                         </div>
                     </React.Fragment>
                 }
