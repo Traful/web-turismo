@@ -6,7 +6,7 @@ class Menu extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            idSubMenu: 0,
+            idSubMenu: 1,
             visibleMenu: false
         }
         this.setMenu = this.setMenu.bind(this);
@@ -23,21 +23,26 @@ class Menu extends Component {
             this.setState({visibleMenu: !this.state.visibleMenu});
         } else {
             this.setState({
-                idSubMenu: id,
-                visibleMenu: true
+                idSubMenu: id
+            }, () => {
+                this.setState({ visibleMenu: true });
             });
         }
     }
 
-    componentWillMount() {
+    componentDidUpdate() {
+        /*
+        if(this.state.visibleMenu) {
+            this.setState({ visibleMenu: false });
+        }
+        */
+    }
+
+    componentDidMount() {
 
     }
 
     render() {
-        var submenu = null;
-        if(this.state.idSubMenu === 1) {
-            submenu = <ZonasMenu onZonaClick={this.closeMenu} />;
-        }
         return (
             <div className="Menu">
                 <div className="container-fluid menu-ul animated bounceInDown delay-2s">
@@ -57,7 +62,7 @@ class Menu extends Component {
                     ?
                     <div className="menu-visita-container animated fadeIn">
                         <div className="menu-visita">
-                            {submenu}
+                            <ZonasMenu idMenu={this.state.idSubMenu} onZonaClick={this.closeMenu} />
                         </div>
                     </div>
                     :

@@ -86,9 +86,4 @@ class Novedadesfull extends Component {
     }
 }
 
-/*
-<div class="pie">
-    <span class="btn-novedades">Leer <i class="fas fa-arrow-right"></i></span>
-</div>
-*/
 export default Novedadesfull;

@@ -3,6 +3,7 @@ import { Consumer } from "../context";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import GoogleMap from "../components/subcomponentes/GoogleMap";
+import Alojamientos from "../components/subcomponentes/Alojamientos";
 
 class PLocalidad extends Component {
     constructor(props) {
@@ -231,7 +232,8 @@ class PLocalidad extends Component {
                         <div className="container mb-5">
                             <div className="row">
                                 <div className="col">
-                                    Alojamientos y Gastronomía
+                                    <h4>Alojamientos y Gastronomía</h4>
+                                    <Alojamientos idLocalidad="0" />
                                 </div>
                             </div>
                         </div>
