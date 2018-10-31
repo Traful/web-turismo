@@ -1655,18 +1655,18 @@ $f-radius: 7px;
 
 @media only screen and (max-width: 990px) {
   /*
-    .Novedadesfull {
-        .nf-body {
-            .nf-novedad {
-                flex-direction: column;
-                .nf-novedad-left {
-                    position: fixed;
-                }
-            }
-
-        }
-    }
-    */
+      .Novedadesfull {
+          .nf-body {
+              .nf-novedad {
+                  flex-direction: column;
+                  .nf-novedad-left {
+                      position: fixed;
+                  }
+              }
+  
+          }
+      }
+      */
   .atractivo-full-item .imagen img {
     height: 250px;
     width: 700px;
@@ -1756,12 +1756,68 @@ $f-radius: 7px;
   background-color: brown;
   display: grid;
   grid-template-columns: repeat(auto-fill, 300px);
-  grid-auto-rows: 400px;
+  grid-auto-rows: auto;
   justify-content: center;
   grid-gap: 10px;
 }
-.alojamientos-container .alojamientos-lista .carta {
-  background-color: chocolate;
+.alojamientos-container .alojamientos-lista .alo-card {
+  width: 300px;
+  height: 400px;
+  position: relative;
+}
+.alojamientos-container .alojamientos-lista .alo-card:hover .img-box {
+  transform: translateY(-100%) rotateX(90deg);
+}
+.alojamientos-container .alojamientos-lista .alo-card:hover .details {
+  transform: translateY(0) rotateX(0deg);
+}
+.alojamientos-container .alojamientos-lista .alo-card .img-box {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform-origin: bottom;
+  transition: 0.5s;
+  transform: translateY(0) rotateX(0deg);
+}
+.alojamientos-container .alojamientos-lista .alo-card .img-box .img-content {
+  position: relative;
+}
+.alojamientos-container .alojamientos-lista .alo-card .img-box .img-content img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 300px;
+  height: 400px;
+  object-fit: cover;
+}
+.alojamientos-container .alojamientos-lista .alo-card .img-box .img-content .nombre {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  display: block;
+  background-color: #722789;
+  color: white;
+  text-transform: uppercase;
+  text-align: center;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  z-index: 999;
+  text-shadow: 1px 1px 1px #000;
+}
+.alojamientos-container .alojamientos-lista .alo-card .details {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #262626;
+  transform-origin: top;
+  transition: 0.5s;
+  box-sizing: border-box;
+  transform: translateY(100%) rotateX(-90deg);
 }
 .alojamientos-container .alojamientos-estadisticas {
   padding: 1rem;

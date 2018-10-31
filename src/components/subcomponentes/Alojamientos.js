@@ -68,7 +68,32 @@ class Alojamientos extends Component {
                             </div>
                         </div>
                         <div className="alojamientos-lista">
-                            <div className="carta">Carta</div>
+                            <div className="alo-card">
+                                <div className="img-box">
+                                    <div className="img-content">
+                                        <div className="nombre">Hotel Potrero De Los Funes</div>
+                                        <img className="" src="https://source.unsplash.com/random" alt="Img" />
+                                    </div>
+                                </div>
+                                <div className="details">
+                                    <div className="content">
+                                        Aloha
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="alo-card">
+                                <div className="img-box">
+                                    <div className="img-content">
+                                        <div className="nombre">Hola</div>
+                                        <img className="" src="https://source.unsplash.com/random" alt="Img" />
+                                    </div>
+                                </div>
+                                <div className="details">
+                                    <div className="content">
+                                        Aloha
+                                    </div>
+                                </div>
+                            </div>
                             
                         </div>
                         <div className="alojamientos-estadisticas">
