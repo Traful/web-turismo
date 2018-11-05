@@ -213,7 +213,7 @@ class Zona extends Component {
                                                 {localidades}
                                             </div>
                                             <div>
-                                                <button className="btn btn-block mt-3 text-white" style={{backgroundColor: `#${this.state.dataZona.color}`}}><i className="fas fa-file-pdf"></i> Descargar Folletería</button>
+                                                <a className="btn btn-block mt-3 text-white" href={`${process.env.REACT_APP_API_RECURSOS}/folletos/${this.state.dataZona.pdf}`} target="_blank" rel="noopener noreferrer" style={{backgroundColor: `#${this.state.dataZona.color}`}}><i className="fas fa-file-pdf"></i> Descargar Folletería</a>
                                             </div>
                                         </div>
                                     </div>

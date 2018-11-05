@@ -1655,18 +1655,18 @@ $f-radius: 7px;
 
 @media only screen and (max-width: 990px) {
   /*
-      .Novedadesfull {
-          .nf-body {
-              .nf-novedad {
-                  flex-direction: column;
-                  .nf-novedad-left {
-                      position: fixed;
-                  }
-              }
-  
-          }
-      }
-      */
+    .Novedadesfull {
+        .nf-body {
+            .nf-novedad {
+                flex-direction: column;
+                .nf-novedad-left {
+                    position: fixed;
+                }
+            }
+
+        }
+    }
+    */
   .atractivo-full-item .imagen img {
     height: 250px;
     width: 700px;
@@ -1740,38 +1740,28 @@ $f-radius: 7px;
     Componente Alojamientos.js
 */
 .alojamientos-container {
-  display: grid;
-  grid-template-columns: 300px 1fr;
-  grid-template-rows: auto 100px;
-  grid-gap: 10px;
-}
-.alojamientos-container .alojamientos-filtro {
-  grid-row: span 2/auto;
-  padding: 1rem;
-  background-color: brown;
-}
-.alojamientos-container .alojamientos-lista {
   padding-top: 1rem;
   padding-bottom: 1rem;
-  background-color: brown;
   display: grid;
-  grid-template-columns: repeat(auto-fill, 300px);
+  grid-template-columns: repeat(auto-fill, 200px);
   grid-auto-rows: auto;
   justify-content: center;
-  grid-gap: 10px;
+  grid-gap: 20px;
 }
-.alojamientos-container .alojamientos-lista .alo-card {
-  width: 300px;
-  height: 400px;
+.alojamientos-container .alo-card {
+  width: 200px;
+  height: 300px;
   position: relative;
+  -webkit-box-shadow: 1px 1px 10px 1px #000000;
+  box-shadow: 1px 1px 10px 1px #000000;
 }
-.alojamientos-container .alojamientos-lista .alo-card:hover .img-box {
+.alojamientos-container .alo-card:hover .img-box {
   transform: translateY(-100%) rotateX(90deg);
 }
-.alojamientos-container .alojamientos-lista .alo-card:hover .details {
+.alojamientos-container .alo-card:hover .details {
   transform: translateY(0) rotateX(0deg);
 }
-.alojamientos-container .alojamientos-lista .alo-card .img-box {
+.alojamientos-container .alo-card .img-box {
   position: absolute;
   top: 0;
   left: 0;
@@ -1781,24 +1771,28 @@ $f-radius: 7px;
   transition: 0.5s;
   transform: translateY(0) rotateX(0deg);
 }
-.alojamientos-container .alojamientos-lista .alo-card .img-box .img-content {
+.alojamientos-container .alo-card .img-box .img-content {
   position: relative;
 }
-.alojamientos-container .alojamientos-lista .alo-card .img-box .img-content img {
+.alojamientos-container .alo-card .img-box .img-content img {
   position: absolute;
   top: 0;
   left: 0;
-  width: 300px;
-  height: 400px;
+  width: 200px;
+  height: 300px;
   object-fit: cover;
 }
-.alojamientos-container .alojamientos-lista .alo-card .img-box .img-content .nombre {
+.alojamientos-container .alo-card .img-box .img-content .nombre {
   position: absolute;
   top: 0px;
   left: 0px;
   width: 100%;
   display: block;
-  background-color: #722789;
+  background: #722789;
+  background: -moz-linear-gradient(left, rgba(114, 39, 137, 0.95) 0%, rgba(237, 15, 104, 0.8) 100%);
+  background: -webkit-linear-gradient(left, rgba(114, 39, 137, 0.95) 0%, rgba(237, 15, 104, 0.8) 100%);
+  background: linear-gradient(to right, rgba(114, 39, 137, 0.95) 0%, rgba(237, 15, 104, 0.8) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#722789", endColorstr="#ed0f68",GradientType=1 );
   color: white;
   text-transform: uppercase;
   text-align: center;
@@ -1807,7 +1801,7 @@ $f-radius: 7px;
   z-index: 999;
   text-shadow: 1px 1px 1px #000;
 }
-.alojamientos-container .alojamientos-lista .alo-card .details {
+.alojamientos-container .alo-card .details {
   position: absolute;
   top: 0;
   left: 0;
@@ -1818,10 +1812,6 @@ $f-radius: 7px;
   transition: 0.5s;
   box-sizing: border-box;
   transform: translateY(100%) rotateX(-90deg);
-}
-.alojamientos-container .alojamientos-estadisticas {
-  padding: 1rem;
-  background-color: brown;
 }
 
 /*

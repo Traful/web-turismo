@@ -12,6 +12,7 @@ class PLocalidad extends Component {
             loading: true,
             id: 0,
             dataLocalidad: {
+                id: 0,
                 color: "722789",
                 imagenes: [
                     {imagen: "default.jpg"}
@@ -229,11 +230,14 @@ class PLocalidad extends Component {
                                 </div>
                             </div>
                         </div>
-                        <div className="container mb-5">
+                        <div className="container-fluid mb-5">
                             <div className="row">
                                 <div className="col">
-                                    <h4>Alojamientos y Gastronomía</h4>
-                                    <Alojamientos idLocalidad="0" />
+                                    <h4>Alojamientos</h4>
+                                    <Alojamientos idLocalidad={this.state.dataLocalidad.id} />
+                                </div>
+                                <div className="col">
+                                    <h4>Gastronomía</h4>
                                 </div>
                             </div>
                         </div>
