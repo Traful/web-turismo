@@ -1,3 +1,5 @@
+//sass --watch src/scss/App.scss:src/App.css
+
 @import "include/config";
 @import "include/colors";
 @import "include/mixins";
@@ -16,6 +18,8 @@
 @import "include/recorridos";
 //Componente Descarga.js
 @import "include/descarga";
+//Componente PNovedad.js
+@import "include/novedad";
 //Componente Novedades.js
 @import "include/novedades";
 //Componente Novedadesfull.js

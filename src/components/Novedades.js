@@ -1,43 +1,23 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
+import { Consumer } from "../context";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 class Novedades extends Component {
     constructor(props) {
         super(props);
         this.state = {
             loading: true,
-            data: [
-                {
-                    id: 1,
-                    titulo: "Cortaderas se prepara",
-                    subtitulo: "Para la fiesta de turísmo",
-                    foto: `${process.env.REACT_APP_API_RECURSOS}/recursos/novedades/novedad_1.jpg`,
-                    detalle: "La actividad será el día 28 de Septiembre. Para definir detalles del evento, el Ministro de Turismo de San Luis Aldo Gonzáles Funes recibió este martes en su despacho al intendente de Cortaderas, Juan Aparicio, y a la Secretaria de Cultura, Andrea Reyna",
-                    display: "block"
-                },
-                {
-                    id: 2,
-                    titulo: "Y la milanesa?",
-                    subtitulo: "Cuando volvemos a la Gaviota?",
-                    foto: `${process.env.REACT_APP_API_RECURSOS}/recursos/novedades/novedad_2.jpg`,
-                    detalle: "1/2 pila vieja!. Ya no recuerdo cuando fue la última vez que pisamos ese antro de perdición culinaria.",
-                    display: "none"
-                },
-                {
-                    id: 3,
-                    titulo: "Uno de",
-                    subtitulo: "Suegras",
-                    foto: `${process.env.REACT_APP_API_RECURSOS}/recursos/novedades/novedad_3.jpg`,
-                    detalle: "- Buenas le llamamos por una encuesta. ¿Su nombre? - Adán. - ¿Y el de su mujer? - Eva. - Increíble, ¿la serpiente vive aquí también? - Si un momento. ¡¡SUEGRAA!!, la buscan...",
-                    display: "none"
-                }
-            ],
-            index: 0
+            data: [],
+            index: 0,
+            timerID: false
         }
         this.stop = this.stop.bind(this);
+        this.carouselTimer = this.carouselTimer.bind(this);
     }
 
     carouselTimer() {
+        console.log("asdad");
         let indice = parseInt(this.state.index, 10);
         indice++;
         if(indice > (this.state.data.length - 1)) {
@@ -60,61 +40,102 @@ class Novedades extends Component {
     }
 
     stop() {
-        clearInterval(this.timerID);
+        clearInterval(this.state.timerID);
     }
 
-    componentWillMount() {
+    componentDidMount() {
         //A los datos del Fetch hay que agregar la propiedad display: "none"
-        if(this.state.data.length) {
-            this.timerID = setInterval(() => this.carouselTimer(), this.props.time);
-        }
+        var token = this.context.token;
+        var self = this;
+        axios({
+            method: "get",
+            headers: {
+                "Authorization": token
+            },
+            url: `${process.env.REACT_APP_API}/novedades/12`,
+            responseType: 'json'
+        })
+        .then((response) => {
+            let data = response.data.data.registros.map((novedad) => {
+                novedad.display = "none";
+                return novedad;
+            });
+            self.setState({
+                data: data,
+                loading: false
+            }, () => {
+                if(parseInt(response.data.data.count, 10) > 0) {
+                    let timer = setInterval(self.carouselTimer, self.props.time);
+                    self.setState({
+                        timerID: timer
+                    }, () => {
+                        self.carouselTimer();
+                    });
+                }
+            });
+        })
+        .catch((error) => {
+            console.log(error);
+        });
     }
 
     componentWillUnmount() {
-        clearInterval(this.timerID);
+        clearInterval(this.state.timerID);
     }
 
     render() {
         const items = this.state.data.map((item) => {
-            return(
-                <div key={`ci-${item.id}`} className="animated fadeInRight delay-2s" style={{display: item.display}}>
-                    <div className="carousel-item-js">
-                        <img src={item.foto} className="thumbnail" alt="Img" />
-                        <div>
-                            <p>{item.titulo}</p>
-                            <p>{item.subtitulo}</p>
-                            <p>{item.detalle}</p>
+            let descripcion = item.descripcion.substr(0, 150) + "...";
+            let fecha = item.fecha.split("-");
+            //<div key={`ci-${item.id}`} className="animated fadeInRight delay-2s" style={{display: item.display, width: "100%"}}></div>
+            return (
+                <div key={`ci-${item.id}`} className="" style={{display: item.display, width: "100%"}}>
+                    <div className="row">
+                        <div className="col-sm-3">
+                            <img className="img-fluid" src={`${process.env.REACT_APP_API_RECURSOS}/recursos/novedades/${item.foto_uno}`} alt="Foto" />
+                        </div>
+                        <div className="col-sm-9">
+                            <div className="d-flex justify-content-between">
+                                <h1>{item.titulo}</h1>
+                                <span className="pt-3">{`${fecha[2]}/${fecha[1]}/${fecha[0]}`}</span>
+                            </div>
+                            <div><h4>{item.subtitulo}</h4></div>
+                            <div><p>{descripcion}</p></div>
+                            <div className="d-flex justify-content-end"><i className="fas fa-book-open"></i></div>
                         </div>
                     </div>
                 </div>
             );
         });
         return (
-            <React.Fragment>
-                <div className="container Novedades">
-                    <div className="row">
-                        <div className="col">
-                            <div className="novedades-body">
-                                <div className="novedades-carousel">
-                                    {items}
-                                </div>
-                                <Link to="/novedades">
-                                    <div className="novedades-titulo">
-                                        <p>No</p>
-                                        <p>Ve</p>
-                                        <p>Da</p>
-                                        <p>Des</p>
-                                        <p><i className="fas fa-arrow-right"></i></p>
+            <div className="container mb-3">
+                <div className="row">
+                    <div className="col">
+                        <div className="Novedades">
+                            <Link to="/novedades" className="novedades-leyenda">
+                                    <div className="background-bar"></div>
+                                    <div className="texto">
+                                        <ul>
+                                            <li>No</li>
+                                            <li>Ve</li>
+                                            <li>Da</li>
+                                            <li>Des</li>
+                                            <li><i className="fas fa-arrow-right"></i></li>
+                                        </ul>
                                     </div>
-                                </Link>
+                            </Link>
+                            <div className="novedades-body">
+                                {items}
                             </div>
                         </div>
                     </div>
                 </div>
                 <button type="btn btn-primary" onClick={this.stop}>Stop</button>
-            </React.Fragment>
+            </div>
         );
     }
 }
+
+Novedades.contextType = Consumer;
 
 export default Novedades;

@@ -960,87 +960,221 @@ body {
   }
 }
 /*
+    Componente PNovedad.js
+*/
+.PNovedad {
+  padding-top: 160px;
+}
+.PNovedad .n-titulo {
+  background-color: #722789;
+  height: 50px;
+  position: relative;
+  margin-bottom: 50px;
+}
+.PNovedad .n-titulo span {
+  position: absolute;
+  top: 15px;
+  left: 10px;
+  background-color: #fff;
+  color: #722789;
+  font-size: 2rem;
+  line-height: 2rem;
+  font-weight: 400;
+  padding: 10px 18px;
+  text-transform: uppercase;
+}
+
+.novedad-item {
+  display: grid;
+  grid-template-areas: "imagen titulo" "imagen body";
+  grid-template-columns: 300px auto;
+  grid-template-rows: 75px auto;
+  /*
+  .pie {
+      grid-area: pie;
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-end;
+      padding-left: 10px;
+      .btn-novedades {
+          background-color: $color-uno;
+          padding: 0 8px;
+          color: #fff;
+      }
+  }
+  */
+}
+.novedad-item .imagen {
+  grid-area: imagen;
+  position: relative;
+  object-fit: cover;
+}
+.novedad-item .imagen span {
+  margin: 5px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 80%;
+  background-color: #bf3276;
+  padding: 4px;
+  text-align: center;
+  text-transform: uppercase;
+  color: #fff;
+}
+.novedad-item .titulo {
+  grid-area: titulo;
+  padding-left: 10px;
+  display: flex;
+  flex-direction: column;
+  background-color: #bf3276;
+  justify-content: center;
+}
+.novedad-item .titulo h3 {
+  margin-bottom: 0;
+  font-size: 1.75rem;
+  font-weight: 500;
+  line-height: 1.2;
+  color: #fff;
+  text-transform: uppercase;
+}
+.novedad-item .body {
+  grid-area: body;
+  padding: 10px;
+}
+.novedad-item .body p {
+  overflow: hidden;
+  text-align: justify;
+  margin-block-start: 0px;
+  margin-block-end: 0px;
+  margin-bottom: 0px;
+}
+.novedad-item .body .btn-novedades {
+  background-color: #722789;
+  padding: 0 8px;
+  color: #fff;
+  /*
+  -webkit-border-radius: 8px;
+  border-radius: 8px;
+  */
+}
+
+@media only screen and (max-width: 370px) {
+  .novedad-item .titulo h3 {
+    font-size: 1.2rem;
+    font-weight: 500;
+    line-height: 1;
+  }
+}
+@media only screen and (max-width: 700px) {
+  .Novedad {
+    padding-top: 180px;
+  }
+}
+@media only screen and (max-width: 990px) {
+  .novedad-item {
+    grid-template-areas: "titulo" "imagen" "body" "pie";
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(4, auto);
+  }
+  .novedad-item .imagen {
+    justify-self: center;
+  }
+}
+/*
     Componente Novedades.js
 */
 .Novedades {
-  padding-left: 10px;
+  margin: 0;
+  padding: 0;
+  border: none;
+  display: grid;
+  grid-template-columns: 90px 1fr;
+  grid-template-rows: minmax(190px, auto);
 }
-.Novedades .novedades-body {
-  width: 100%;
-  height: 200px;
-  position: absolute;
-  overflow: hidden;
+.Novedades .novedades-leyenda {
   position: relative;
-  top: 0;
-  left: 0;
-}
-.Novedades .novedades-body .novedades-carousel {
   cursor: pointer;
+}
+.Novedades .novedades-leyenda .background-bar {
   position: absolute;
+  right: 0;
   top: 0;
-  left: 20px;
   height: 100%;
-  display: block;
   background-color: #722789;
-  padding-left: 100px;
-  padding-top: 20px;
-  color: #fff;
+  width: 60px;
+  display: block;
 }
-.Novedades .novedades-body .novedades-carousel .carousel-item-js {
-  height: auto;
+.Novedades .novedades-leyenda .texto {
+  position: absolute;
+  left: 0;
+  top: 10px;
+  background-color: #fff;
+  color: #722789;
   display: flex;
+  flex-direction: column;
+  padding: 5px 10px;
 }
-.Novedades .novedades-body .novedades-carousel .carousel-item-js img {
-  width: 160px;
-  height: 160px;
-  object-fit: cover;
-  margin-right: 25px;
-}
-.Novedades .novedades-body .novedades-carousel .carousel-item-js div {
-  padding-right: 10px;
-}
-.Novedades .novedades-body .novedades-carousel .carousel-item-js div p {
+.Novedades .novedades-leyenda .texto ul {
+  margin: 0;
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
   margin-block-start: 0px;
   margin-block-end: 0px;
   margin-inline-start: 0px;
   margin-inline-end: 0px;
+  padding-inline-start: 0px;
 }
-.Novedades .novedades-body .novedades-carousel .carousel-item-js div p:nth-child(1) {
+.Novedades .novedades-leyenda .texto ul li {
+  text-align: end;
   text-transform: uppercase;
-  font-size: 1.5rem;
-  line-height: 1.8rem;
-  font-weight: 800;
-}
-.Novedades .novedades-body .novedades-carousel .carousel-item-js div p:nth-child(2) {
-  text-transform: uppercase;
-  font-size: 1.5rem;
-  line-height: 1.5rem;
-  font-weight: 800;
-  margin-bottom: 10px;
-}
-.Novedades .novedades-body .novedades-titulo {
-  cursor: pointer;
-  top: 50%;
-  transform: translateY(-50%);
-  left: 0;
-  background-color: #fff;
-  padding: 10px 10px 10px 0;
-  position: absolute;
-}
-.Novedades .novedades-body .novedades-titulo p {
-  text-transform: uppercase;
-  margin: 0;
-  padding: 0;
-  text-align: right;
-  width: 70px;
   font-size: 2rem;
   line-height: 2rem;
   font-weight: 800;
-  margin-block-start: 0;
-  margin-block-end: 0;
-  color: #722789;
+}
+.Novedades .novedades-leyenda .texto ul li i {
+  font-size: 1.5rem;
+}
+.Novedades .novedades-body {
+  margin-left: -1px;
+  padding: 10px;
+  background-color: #722789;
+  color: #fff;
+}
+.Novedades .novedades-body .img-fluid {
+  border: 2px solid #fff;
 }
 
+@media only screen and (max-width: 992px) {
+  .Novedades {
+    grid-template-columns: 1fr;
+    grid-template-rows: 50px auto;
+  }
+  .Novedades .novedades-leyenda .background-bar {
+    position: absolute;
+    left: 0;
+    top: 20px;
+    width: 100%;
+    height: 30px;
+  }
+  .Novedades .novedades-leyenda .texto {
+    left: 10px;
+    top: 0px;
+  }
+  .Novedades .novedades-leyenda .texto ul {
+    flex-direction: row;
+  }
+  .Novedades .novedades-leyenda .texto ul li {
+    text-align: center;
+  }
+  .Novedades .novedades-leyenda .texto ul li i {
+    margin-left: 10px;
+    transform: rotate(90deg);
+  }
+  .Novedades .novedades-body {
+    margin-left: 0px;
+  }
+}
 /*
     Componente Novedadesfull.js
 */
@@ -1069,7 +1203,7 @@ body {
 .novedad-full-item {
   display: grid;
   grid-template-areas: "imagen titulo" "imagen body";
-  grid-template-columns: 400px auto;
+  grid-template-columns: 300px auto;
   grid-template-rows: 75px auto;
   /*
   .pie {

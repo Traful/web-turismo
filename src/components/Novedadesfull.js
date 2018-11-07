@@ -1,70 +1,58 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
+import { Consumer } from "../context";
+import { Link } from "react-router-dom";
+import axios from "axios";
 
 class Novedadesfull extends Component {
     constructor(props) {
         super(props);
         this.state = {
             loading: true,
-            data: [
-                {
-                    id: 1,
-                    fecha: "08/12",
-                    lugar: "Justo Daract",
-                    color: "#cb6120",
-                    titulo: "Cortaderas se prepara",
-                    subtitulo: "Para la fiesta de turísmo",
-                    foto: `${process.env.REACT_APP_API_RECURSOS}/recursos/novedades/novedad_1.jpg`,
-                    detalle: "La actividad será el día 28 de Septiembre. Para definir detalles del evento, el Ministro de Turismo de San Luis Aldo Gonzáles Funes recibió este martes en su despacho al intendente de Cortaderas, Juan Aparicio, y a la Secretaria de Cultura, Andrea Reyna",
-                },
-                {
-                    id: 2,
-                    fecha: "08/12",
-                    lugar: "Justo Daract",
-                    color: "#a2bd31",
-                    titulo: "Y la milanesa?",
-                    subtitulo: "Cuando volvemos a la Gaviota?",
-                    foto: `${process.env.REACT_APP_API_RECURSOS}/recursos/novedades/novedad_2.jpg`,
-                    detalle: "1/2 pila vieja!. Ya no recuerdo cuando fue la última vez que pisamos ese antro de perdición culinaria.",
-                },
-                {
-                    id: 3,
-                    fecha: "08/12",
-                    lugar: "Justo Daract",
-                    color: "#326534",
-                    titulo: "Uno de",
-                    subtitulo: "Suegras",
-                    foto: `${process.env.REACT_APP_API_RECURSOS}/recursos/novedades/novedad_3.jpg`,
-                    detalle: "- Buenas le llamamos por una encuesta. ¿Su nombre? - Adán. - ¿Y el de su mujer? - Eva. - Increíble, ¿la serpiente vive aquí también? - Si un momento. ¡¡SUEGRAA!!, la buscan...",
-                }
-            ],
-            index: 0
+            data: []
         }
     }
 
-
-    componentWillMount() {
-    }
-
-    componentWillUnmount() {
+    componentDidMount() {
+        var token = this.context.token;
+        var self = this;
+        axios({
+            method: "get",
+            headers: {
+                "Authorization": token
+            },
+            url: `${process.env.REACT_APP_API}/novedades/12`,
+            responseType: 'json'
+        })
+        .then((response) => {
+            self.setState({
+                data: response.data.data.registros,
+                loading: false
+            });
+        })
+        .catch((error) => {
+            console.log(error);
+        });
     }
 
     render() {
         const novedades = this.state.data.map((nov) => {
+            let descripcion = nov.descripcion.substr(0, 450) + "...";
+            let fecha = nov.fecha.split("-");
             return(
-                <div className="row mb-5">
+                <div key={`nov-f-${nov.id}`} className="row mb-5">
                     <div className="col">
                         <div className="novedad-full-item">
                             <div className="imagen">
-                                <span style={{backgroundColor: nov.color}}>{nov.fecha} - {nov.lugar}</span>
-                                <img className="img-fluid" src={nov.foto} alt="Img" />
+                                <span style={{backgroundColor: nov.color}}>{`${fecha[2]}/${fecha[1]}/${fecha[0]}`} - {nov.localidad}</span>
+                                <img className="img-fluid" src={`${process.env.REACT_APP_API_RECURSOS}/recursos/novedades/${nov.foto_uno}`} alt="Img" />
                             </div>
                             <div className="titulo" style={{backgroundColor: nov.color}}>
                                 <h3>{nov.titulo}</h3>
                                 <h3>{nov.subtitulo}</h3>
                             </div>
                             <div className="body">
-                                <p className="text-dark mb-2">{nov.detalle}</p>
-                                <span className="btn-novedades">Leer <i className="fas fa-arrow-right"></i></span>
+                                <p className="text-dark mb-2">{descripcion}</p>
+                                <Link to={`/novedad/${nov.id}`}><span className="btn-novedades">Leer <i className="fas fa-arrow-right"></i></span></Link>
                             </div>
                         </div>
                     </div>
@@ -85,5 +73,7 @@ class Novedadesfull extends Component {
         );
     }
 }
+
+Novedadesfull.contextType = Consumer;
 
 export default Novedadesfull;

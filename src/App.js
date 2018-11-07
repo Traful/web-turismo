@@ -8,7 +8,8 @@ import Menu from "./components/Menu";
 
 import PHome from "./pages/PHome";
 import PZona from "./pages/PZona";
-import PNovedades from "./pages/PNoveades";
+import PNovedades from "./pages/PNovedades";
+import PNovedad from "./pages/PNovedad";
 import PLocalidad from "./pages/PLocalidad";
 import PAtractivo from "./pages/PAtractivo";
 import PListadoAtractivos from "./pages/PListadoAtractivos";
@@ -25,6 +26,7 @@ class App extends Component {
 						<Switch>
 							<Route exact path="/" component={PHome} />
 							<Route exact path="/novedades" component={PNovedades} />
+							<Route exact path="/novedad/:id" component={PNovedad} />
 							<Route exact path="/zona/:id" component={PZona} />
 							<Route exact path="/localidad/:id" component={PLocalidad} />
 							<Route exact path="/atractivo/:id" component={PAtractivo} />

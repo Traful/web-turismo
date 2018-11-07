@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Novedadesfull from "../components/Novedadesfull";
 
-class PNoveades extends Component {
+class PNovedades extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -15,7 +15,7 @@ class PNoveades extends Component {
 
     render() {
         return (
-            <div className="PNoveades">
+            <div className="PNovedades">
                 {
                     this.state.loading ?
                     <div>Cargando...</div>
@@ -29,4 +29,4 @@ class PNoveades extends Component {
     }
 }
 
-export default PNoveades;
+export default PNovedades;
