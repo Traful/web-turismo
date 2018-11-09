@@ -230,13 +230,13 @@ class PLocalidad extends Component {
                                 </div>
                             </div>
                         </div>
-                        <div className="container-fluid mb-5">
+                        <div className="container mb-5">
                             <div className="row">
-                                <div className="col">
+                                <div className="col-12">
                                     <h4>Alojamientos</h4>
                                     <Alojamientos idLocalidad={this.state.dataLocalidad.id} />
                                 </div>
-                                <div className="col">
+                                <div className="col-12">
                                     <h4>Gastronomía</h4>
                                 </div>
                             </div>

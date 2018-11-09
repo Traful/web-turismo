@@ -5,6 +5,10 @@
 @import "include/mixins";
 @import "include/init";
 
+
+//Class Viewer
+@import "include/viewer";
+
 //Componente Menu.js
 @import "include/menu";
 
@@ -18,6 +22,10 @@
 @import "include/recorridos";
 //Componente Descarga.js
 @import "include/descarga";
+//Componente EventoForm.js
+@import "include/eventoform";
+//Componente PEventos.js
+@import "include/eventos";
 //Componente PNovedad.js
 @import "include/novedad";
 //Componente Novedades.js

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Consumer } from "../../context";
 import axios from "axios";
+import Viewer from "./Viewer";
 
 /*
     Ej de uso: <Alojamientos idLocalidad="0" />
@@ -78,7 +79,7 @@ class Alojamientos extends Component {
                 foto = alo.fotos[0].imagen;
             }
             return(
-                <div key={`alo-card-${alo.id}`} className="alo-card">
+                <div key={`alo-card-${alo.id}`} className="alo-card m-3">
                     <div className="img-box">
                         <div className="img-content">
                             <div className="nombre">{alo.nombre}</div>
@@ -99,9 +100,9 @@ class Alojamientos extends Component {
                     loading ?
                     <div>Cargando...</div>
                     :
-                    <div className="alojamientos-container">
+                    <Viewer visibles="4">
                         {alojamientos}
-                    </div>
+                    </Viewer>
                 }
                 <style jsx="true">{`
                 `}</style>

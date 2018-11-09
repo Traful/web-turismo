@@ -1,0 +1,158 @@
+/*
+    Componente EventoForm.js
+*/
+
+.EventoForm {
+    width: 100%;
+    //min-height: 100vh;
+    background-color: $color-uno;
+    @include degrado(.95, .8);
+    display: grid;
+    grid-template-areas: "leyenda right-top-bars" "body-left body-right" ". right-bottom-bars";
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 100px 1fr 75px;
+    //grid-gap: 10px;
+    row-gap: 10px;
+    column-gap: 60px;
+    .leyenda {
+        grid-area: leyenda;
+        align-self: end;
+        justify-self: end;
+        h1 {
+            color: white;
+            width: 350px;
+            font-size: 3rem;
+            letter-spacing: 4.5px;
+            text-align: center;
+        }
+    }
+    .right-top-bars {
+        grid-area: right-top-bars;
+        align-self: start;
+        justify-self: end;
+        width: 100%;
+        height: 100%;
+        background-image: url($server_path + "imgs/top-right.png");
+        background-repeat: no-repeat;
+        background-size: 50% 100%;
+        background-position: top right;
+    }
+    .body-left {
+        width: 350px;
+        color: $color-uno;
+        grid-area: body-left;
+        align-self: start;
+        justify-self: end;
+        .bl-button {
+            margin-bottom: 10px;
+            cursor: pointer;
+            text-decoration: none;
+            color: $color-uno;
+            span {
+                font-size: 1.7rem;
+                font-weight: 600;
+            }
+            svg {
+                margin-top: 10px;
+                .icon {
+                    fill: $color-uno;
+                }
+            }
+        }
+        .bl-img {
+            width: 350px;
+            height: 300px;
+            position: relative;
+            img {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+            span {
+                position: absolute;
+                left: 0;
+                bottom: 5%;
+                background-color: rgb(59, 145, 216);
+                color: white;
+                padding-left: 5px;
+                padding-right: 5px;
+            }
+        }
+    }
+    .body-right {
+        grid-area: body-right;
+        align-self: start;
+        justify-self: start;
+        color: #fff;
+        width: 350px;
+        .cal-form {
+            border: 5px solid #fff;
+            padding: 8px;
+            .f-titulo {
+                text-transform: uppercase;
+                .ley-2 {
+                    font-size: 1.2em;
+                    font-weight: 800;
+                    letter-spacing: 2px;
+                }
+            }
+            .f-body {
+                label {
+                    margin-top: 8px;
+                    margin-bottom: 0px;
+                    text-transform: lowercase;
+                    font-size: 1.2em;
+                    font-weight: 800;
+                    //letter-spacing: 2px;
+                }
+                select {
+                    height: 24px;
+                }
+                .f-pie {
+                    align-items: baseline;
+                    text-transform: uppercase;
+                    i {
+                        margin-left: 8px;
+                    }
+                }
+            }
+        }
+    }
+    .right-bottom-bars {
+        grid-area: right-bottom-bars;
+        align-self: end;
+        justify-self: end;
+        width: 100%;
+        height: 100%;
+        background-image: url($server_path + "imgs/bottom-right.png");
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        background-position: bottom right;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .EventoForm {
+        grid-template-areas: "right-top-bars" "leyenda" "body-left" "body-right" "right-bottom-bars";
+        grid-template-columns: 1fr;
+        grid-template-rows: 100px auto 1fr 1fr 75px;
+        //grid-gap: 10px;
+        row-gap: 10px;
+        column-gap: 60px;
+        .leyenda {
+            align-self: center;
+            justify-self: center;
+        }
+        .body-left {
+            align-self: center;
+            justify-self: center;
+        }
+        .body-right {
+            align-self: center;
+            justify-self: center;
+        }
+    }
+}

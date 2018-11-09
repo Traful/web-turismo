@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from "axios";
+import Viewer from "./Viewer";
 
 var ids_servicios = 0;
 
@@ -82,9 +83,14 @@ class LocAlojamiento extends Component {
             return <Aloj key={`aloj-${a.id}`} data={a} />
         });
         return (
+            <React.Fragment>
+            <Viewer visibles="4">
+                {alojamientos}
+            </Viewer>
             <div className="LocAlojamiento">
                 {alojamientos}
             </div>
+            </React.Fragment>
         );
     }
 }

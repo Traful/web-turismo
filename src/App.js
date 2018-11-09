@@ -12,6 +12,7 @@ import PNovedades from "./pages/PNovedades";
 import PNovedad from "./pages/PNovedad";
 import PLocalidad from "./pages/PLocalidad";
 import PAtractivo from "./pages/PAtractivo";
+import PEventos from "./pages/PEventos";
 import PListadoAtractivos from "./pages/PListadoAtractivos";
 
 import Footer from "./components/Footer";
@@ -31,6 +32,7 @@ class App extends Component {
 							<Route exact path="/localidad/:id" component={PLocalidad} />
 							<Route exact path="/atractivo/:id" component={PAtractivo} />
 							<Route exact path="/atractivos/:id" component={PListadoAtractivos} />
+							<Route exact path="/eventos" component={PEventos} />
 						</Switch>
 						<Footer />
 					</React.Fragment>

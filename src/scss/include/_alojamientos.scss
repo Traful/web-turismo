@@ -5,6 +5,7 @@
 $card-width: 200px;
 $card-height: 300px;
 
+/*
 .alojamientos-container {
     padding-top: 1rem;
     padding-bottom: 1rem;
@@ -15,6 +16,7 @@ $card-height: 300px;
     grid-auto-rows: auto;
     justify-content: center;
     grid-gap: 20px;
+*/
     
     .alo-card {
         width: $card-width;
@@ -84,4 +86,6 @@ $card-height: 300px;
             transform: translateY(100%) rotateX(-90deg);
         }
     }
+/*
 }
+*/

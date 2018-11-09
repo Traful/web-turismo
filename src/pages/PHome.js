@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Recorridos from "../components/Recorridos";
+import EventoForm from "../components/EventoForm";
 import Descarga from "../components/Descarga";
 import Novedades from "../components/Novedades";
 
@@ -49,6 +50,7 @@ class Home extends Component {
                             </div>
                         </div>
                         <Recorridos />
+                        <EventoForm />
                         <Descarga />
                         <Novedades time="10000"/>
                     </React.Fragment>
