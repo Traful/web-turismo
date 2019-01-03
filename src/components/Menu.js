@@ -29,18 +29,6 @@ class Menu extends Component {
         }
     }
 
-    componentDidUpdate() {
-        /*
-        if(this.state.visibleMenu) {
-            this.setState({ visibleMenu: false });
-        }
-        */
-    }
-
-    componentDidMount() {
-
-    }
-
     render() {
         return (
             <div className="Menu">
