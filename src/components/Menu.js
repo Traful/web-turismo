@@ -15,7 +15,6 @@ class Menu extends Component {
 
     closeMenu() {
         this.setState({visibleMenu: !this.state.visibleMenu});
-        console.log("close menu");
     }
 
     setMenu(id) {

@@ -965,7 +965,7 @@ body {
 .Descarga .descarga-leyenda .descarga-titulos .dt-1 {
   text-transform: uppercase;
   text-shadow: 1px 1px 2px #000;
-  letter-spacing: 1.15rem;
+  letter-spacing: 0.3rem;
   font-size: 3.5rem;
   line-height: 3.5rem;
   margin-bottom: 3px;
@@ -1015,13 +1015,16 @@ body {
   }
 }
 @media only screen and (max-width: 500px) {
+  .Descarga {
+    margin-bottom: 40px;
+  }
   .Descarga .descarga-leyenda .descarga-titulos {
     text-align: center;
   }
   .Descarga .descarga-leyenda .descarga-titulos .dt-1 {
     text-transform: uppercase;
     text-shadow: 1px 1px 2px #000;
-    letter-spacing: 1rem;
+    letter-spacing: auto;
     font-size: 2rem;
     line-height: 2rem;
     margin-bottom: 3px;
@@ -1113,6 +1116,7 @@ body {
   width: 350px;
   height: 300px;
   position: relative;
+  cursor: pointer;
 }
 .EventoForm .body-left .bl-img img {
   position: absolute;
@@ -1122,7 +1126,18 @@ body {
   height: 100%;
   object-fit: cover;
 }
-.EventoForm .body-left .bl-img span {
+.EventoForm .body-left .bl-img .eveform-titulo {
+  position: absolute;
+  left: 0;
+  top: 5%;
+  width: 100%;
+  padding: 4px;
+  text-transform: uppercase;
+  text-align: center;
+  background-color: #3b91d8;
+  color: white;
+}
+.EventoForm .body-left .bl-img .eveform-fecha {
   position: absolute;
   left: 0;
   bottom: 5%;
@@ -1230,6 +1245,12 @@ body {
   visibility: visible;
 }
 
+.overlay h4 {
+  font-size: 18px;
+  font-weight: 200;
+  margin-bottom: 5px;
+}
+
 .overlay h3 {
   font-size: 36px;
   font-weight: 600;
@@ -1240,7 +1261,7 @@ body {
 .overlay h2 {
   font-size: 30px;
   font-weight: 300;
-  margin-bottom: 50px;
+  margin-bottom: 5px;
 }
 
 .overlay a {
@@ -1355,6 +1376,31 @@ h3.bgc_3 {
 
 h3.bgc_4 {
   background: #F6B63E;
+}
+
+/*
+    Componente PEvento.js
+*/
+.evento-titulo {
+  text-transform: uppercase;
+  font-weight: 800;
+  font-size: 36px;
+  color: #fff;
+}
+
+.evento-descripcion {
+  color: #fff;
+  font-weight: 300;
+  font-size: 1.3rem;
+}
+
+.evento-data li {
+  list-style-type: none;
+  color: #fff;
+  margin-bottom: 5px;
+}
+.evento-data li i {
+  color: #722789;
 }
 
 /*
@@ -1541,6 +1587,13 @@ h3.bgc_4 {
 }
 .Novedades .novedades-body .img-fluid {
   border: 2px solid #fff;
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+}
+.Novedades .novedades-body i {
+  font-size: 2rem;
+  color: #fff;
 }
 
 @media only screen and (max-width: 992px) {
@@ -1571,6 +1624,13 @@ h3.bgc_4 {
   }
   .Novedades .novedades-body {
     margin-left: 0px;
+    text-align: center;
+  }
+  .Novedades .novedades-body .img-fluid {
+    border: 2px solid #fff;
+    width: auto;
+    height: auto;
+    object-fit: cover;
   }
 }
 /*
@@ -1916,91 +1976,6 @@ h3.bgc_4 {
     */
   }
 }
-/*
-    Componente LocAlojamiento.js
-*/
-.Aloj-Data {
-  width: 100%;
-  display: grid;
-  grid-template-areas: "data-nombre data-nombre data-nombre data-nombre" "data-info data-fotos data-servicios data-tarifas" "data-redes data-redes data-redes data-redes";
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: 50px auto 50px;
-}
-.Aloj-Data .data-nombre {
-  grid-area: data-nombre;
-  align-self: center;
-  justify-self: center;
-  text-transform: uppercase;
-  font-size: 2rem;
-  font-weight: 600;
-}
-.Aloj-Data .data-info {
-  grid-area: data-info;
-}
-.Aloj-Data .data-fotos {
-  grid-area: data-fotos;
-}
-.Aloj-Data .data-servicios {
-  grid-area: data-servicios;
-}
-.Aloj-Data .data-tarifas {
-  grid-area: data-tarifas;
-}
-.Aloj-Data .data-redes {
-  grid-area: data-redes;
-}
-
-/*
-$f-alto: 400px;
-$f-ancho: 50%;
-$f-perspectiva: 600;
-$f-back-color:#2D7886; //#FC0;
-$f-front-color: #80BFFF;
-$f-animation-time: .6s;
-$f-animation-type: ease;
-$f-radius: 7px;
-
-@mixin fb-style($grados, $color) {
-    position: absolute;
-    -webkit-transform: perspective( $f-perspectiva ) rotateY( $grados );
-    transform: perspective( $f-perspectiva ) rotateY( $grados );
-    background: $color;
-    width: $f-ancho - 8%;
-    height: $f-alto;
-    border-radius: $f-radius;
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-    transition: -webkit-transform $f-animation-time $f-animation-type 0s;
-    transition: transform $f-animation-time $f-animation-type 0s;
-}
-
-.flip3D {
-    width: $f-ancho;
-    height: $f-alto;
-    margin-bottom: 40px;
-    .flip3D-front {
-        @include fb-style(0deg, $f-front-color);
-    }
-    .flip3D-back {
-        @include fb-style(180deg, $f-back-color);
-    }
-    /*
-    &:hover {
-        .carousel {
-            display: none;
-        }
-        .flip3D-front {
-            -webkit-transform: perspective( $f-perspectiva ) rotateY( -180deg );
-            transform: perspective( $f-perspectiva ) rotateY( -180deg );
-        }
-        .flip3D-back {
-            -webkit-transform: perspective( $f-perspectiva ) rotateY( 0deg );
-            transform: perspective( $f-perspectiva ) rotateY( 0deg );
-        }
-    }
-    //
-}
-*/
 /*
     Componente PAtractivo.js
 */
@@ -2348,10 +2323,146 @@ $f-radius: 7px;
   box-sizing: border-box;
   transform: translateY(100%) rotateX(-90deg);
 }
+.alo-card .details .content .nombre {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  display: block;
+  background: #722789;
+  background: -moz-linear-gradient(left, rgba(114, 39, 137, 0.95) 0%, rgba(237, 15, 104, 0.8) 100%);
+  background: -webkit-linear-gradient(left, rgba(114, 39, 137, 0.95) 0%, rgba(237, 15, 104, 0.8) 100%);
+  background: linear-gradient(to right, rgba(114, 39, 137, 0.95) 0%, rgba(237, 15, 104, 0.8) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#722789", endColorstr="#ed0f68",GradientType=1 );
+  color: white;
+  text-transform: uppercase;
+  text-align: center;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  z-index: 999;
+  text-shadow: 1px 1px 1px #000;
+}
+.alo-card .details .content .detalles {
+  margin-top: 60px;
+  padding-left: 3px;
+}
+.alo-card .details .content .detalles li {
+  list-style-type: none;
+  color: #fff;
+  text-align: center;
+}
+.alo-card .details .content .detalles li p {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 4px;
+}
+.alo-card .details .content .detalles li p a {
+  text-decoration: none;
+  color: #fff;
+}
+.alo-card .details .content .vermas {
+  position: absolute;
+  bottom: 4px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #fff;
+  font-size: 1.4rem;
+  cursor: pointer;
+  text-align: center;
+}
 
 /*
 }
 */
+/*
+    Componente PAlojamiento.js
+*/
+.Alojamiento {
+  margin-top: 150px;
+}
+
+.Alojamiento-data {
+  display: grid;
+  grid-template-areas: "alojamiento-fotos alojamiento-fotos" "alojamiento-texto alojamiento-texto" "alojamiento-ubicacion alojamiento-info";
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: auto;
+  grid-gap: 20px;
+}
+.Alojamiento-data .alojamiento-texto {
+  grid-area: alojamiento-texto;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1.2rem;
+}
+.Alojamiento-data .alojamiento-fotos {
+  grid-area: alojamiento-fotos;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  background-color: #722789;
+  padding: 20px 20px;
+}
+.Alojamiento-data .alojamiento-fotos img {
+  width: 200px;
+  height: 150px;
+  object-fit: cover;
+  margin: 8px;
+  border: 1px solid #fff;
+}
+.Alojamiento-data .alojamiento-ubicacion {
+  grid-area: alojamiento-ubicacion;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.Alojamiento-data .alojamiento-ubicacion span {
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.Alojamiento-data .alojamiento-ubicacion span i {
+  margin-right: 8px;
+  color: #722789;
+}
+.Alojamiento-data .alojamiento-info {
+  grid-area: alojamiento-info;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.Alojamiento-data .alojamiento-info span {
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.Alojamiento-data .alojamiento-info span i {
+  margin-right: 8px;
+  color: #722789;
+}
+.Alojamiento-data .alojamiento-info ul li {
+  text-transform: uppercase;
+}
+
+@media only screen and (max-width: 790px) {
+  .ZonaLocalidad-titulo h3 {
+    font-size: 2rem;
+  }
+
+  .Alojamiento-data {
+    grid-template-areas: "alojamiento-fotos" "alojamiento-texto" "alojamiento-ubicacion" "alojamiento-info";
+    grid-template-columns: 1fr;
+    padding: 8px 2px;
+  }
+  .Alojamiento-data .alojamiento-fotos {
+    padding: 8px;
+  }
+  .Alojamiento-data .alojamiento-fotos img {
+    width: 100%;
+    height: auto;
+  }
+}
 /*
     Componente Footer.js
 */

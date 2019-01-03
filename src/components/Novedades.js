@@ -17,7 +17,6 @@ class Novedades extends Component {
     }
 
     carouselTimer() {
-        console.log("asdad");
         let indice = parseInt(this.state.index, 10);
         indice++;
         if(indice > (this.state.data.length - 1)) {
@@ -92,7 +91,7 @@ class Novedades extends Component {
                 <div key={`ci-${item.id}`} className="" style={{display: item.display, width: "100%"}}>
                     <div className="row">
                         <div className="col-sm-3">
-                            <img className="img-fluid" src={`${process.env.REACT_APP_API_RECURSOS}/recursos/novedades/${item.foto_uno}`} alt="Foto" />
+                            <img className="img-fluid" style={{height: "200px"}} src={`${process.env.REACT_APP_API_RECURSOS}/recursos/novedades/${item.foto_uno}`} alt="Foto" />
                         </div>
                         <div className="col-sm-9">
                             <div className="d-flex justify-content-between">
@@ -101,7 +100,11 @@ class Novedades extends Component {
                             </div>
                             <div><h4>{item.subtitulo}</h4></div>
                             <div><p>{descripcion}</p></div>
-                            <div className="d-flex justify-content-end"><i className="fas fa-book-open"></i></div>
+                            <div className="d-flex justify-content-end">
+                                <Link to={`/novedad/${item.id}`}>
+                                    <i className="fas fa-book-open"></i>
+                                </Link>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -130,7 +133,7 @@ class Novedades extends Component {
                         </div>
                     </div>
                 </div>
-                <button type="btn btn-primary" onClick={this.stop}>Stop</button>
+                {/*<button type="btn btn-primary" onClick={this.stop}>Stop</button> */}
             </div>
         );
     }

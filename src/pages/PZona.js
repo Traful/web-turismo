@@ -158,6 +158,8 @@ class Zona extends Component {
     }
 
     componentDidMount() {
+        document.body.scrollTop = 0; // Safari
+        document.documentElement.scrollTop = 0; // Chrome, Firefox, IE y Opera
         this.getData();
     }
 

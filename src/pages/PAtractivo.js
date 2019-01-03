@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Consumer } from "../context";
 import axios from "axios";
 import GoogleMap from "../components/subcomponentes/GoogleMap";
+import MaxImage from "../components/subcomponentes/MaxImage";
 
 class PAtractivo extends Component {
     constructor(props) {
@@ -13,9 +14,33 @@ class PAtractivo extends Component {
                 color: "722789"
             },
             carousel: [],
-            fotos: []
+            fotos: [],
+            img: {
+                src: "",
+                visible: false
+            }
         };
         this.getData = this.getData.bind(this);
+        this.verImagen = this.verImagen.bind(this);
+        this.closeImg = this.closeImg.bind(this);
+    }
+
+    verImagen(e) {
+        this.setState({
+            img: {
+                src: e.target.src,
+                visible: true
+            }
+        });
+    }
+
+    closeImg() {
+        this.setState({
+            img: {
+                src: "",
+                visible: false
+            }
+        });
     }
 
     getData() {
@@ -74,7 +99,7 @@ class PAtractivo extends Component {
                             });
                             let fotos = response.data.data.registros.map((a, index) => {
                                 return(
-                                    <img key={`img-atr-${a.id}`} className="img-fluid" src={`${process.env.REACT_APP_API_RECURSOS}/atractivos/${a.imagen}`} alt="Img" />
+                                    <img key={`img-atr-${a.id}`} className="img-fluid" src={`${process.env.REACT_APP_API_RECURSOS}/atractivos/${a.imagen}`} alt="Img" onClick={(e) => {this.verImagen(e)}} />
                                 );
                             });
                             self.setState({
@@ -90,7 +115,7 @@ class PAtractivo extends Component {
                     });
                 });
             } else {
-                //Error no se enocntró el id
+                //Error no se encontró el id
             }
         })
         .catch((error) => {
@@ -100,6 +125,8 @@ class PAtractivo extends Component {
     }
     
     componentDidMount() {
+        document.body.scrollTop = 0; // Safari
+        document.documentElement.scrollTop = 0; // Chrome, Firefox, IE y Opera
         this.setState({
             id: this.props.match.params.id
         }, () => {
@@ -180,6 +207,7 @@ class PAtractivo extends Component {
                                 </div>
                             </div>
                         </div>
+                        <MaxImage src={this.state.img.src} visible={this.state.img.visible} onClose={this.closeImg} />
                     </React.Fragment>
                 }
             </div>

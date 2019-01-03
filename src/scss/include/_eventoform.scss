@@ -63,6 +63,7 @@
             width: 350px;
             height: 300px;
             position: relative;
+            cursor: pointer;
             img {
                 position: absolute;
                 left: 0;
@@ -71,7 +72,18 @@
                 height: 100%;
                 object-fit: cover;
             }
-            span {
+            .eveform-titulo {
+                position: absolute;
+                left: 0;
+                top: 5%;
+                width: 100%;
+                padding: 4px;
+                text-transform: uppercase;
+                text-align: center;
+                background-color: rgb(59, 145, 216);
+                color: white;
+            }
+            .eveform-fecha {
                 position: absolute;
                 left: 0;
                 bottom: 5%;

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 
+//Hay un error por las imágenes estáticas (ver duplicado 1_9_20181020005804.jpg y 1_9_20181217092437.jpg) solucionar!
+
 class Recorridos extends Component {
     constructor(props) {
         super(props);

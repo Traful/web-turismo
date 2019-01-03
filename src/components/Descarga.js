@@ -14,7 +14,7 @@ class Descarga extends Component {
                 <img src={`${process.env.REACT_APP_API_RECURSOS}/recursos/primavera-sl.png`} alt="Logo"/>
                 <div className="descarga-leyenda">
                     <div className="descarga-titulos">
-                        <span className="dt-1">Descargá</span>
+                        <span className="dt-1">Próximamente</span>
                         <span className="dt-2">San Luis Turismo</span>
                         <span className="dt-3">Una app para tu visita</span>
                     </div>

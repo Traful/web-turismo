@@ -73,32 +73,24 @@ class PLocalidad extends Component {
                     self.setState({carousel: fotos});
                 });
             } else {
-                //Error no se enocntró el id
+                //Error no se encontro el id
             }
         })
         .catch((error) => {
             console.log(error);
         });
-        //Atractivos de la Localidad
+        //Atractivos de la Localidad (Imperdibles)
         axios({
             method: "get",
             headers: {
                 "Authorization": token
             },
-            url: `${process.env.REACT_APP_API}/ciudad/${self.state.id}/atractivos`,
+            url: `${process.env.REACT_APP_API}/ciudad/${self.state.id}/atractivos/imperdibles`,
             responseType: 'json'
         })
         .then((response) => {
             if(response.data.data.count > 0) {
-                //console.log(response.data.data.registros);
-                var imperdibles = response.data.data.registros.filter((a, index) => {
-                    if(parseInt(a.imperdible) === 0) { //Cambiar a True! (1)
-                        return true;
-                    } else {
-                        return false;
-                    }
-                });
-                self.setState({imperdibles: imperdibles});
+               self.setState({imperdibles: response.data.data.registros});
             } else {
                 //Error no se enocntró el id
             }
@@ -121,6 +113,8 @@ class PLocalidad extends Component {
     }
     
     componentDidMount() {
+        document.body.scrollTop = 0; // Safari
+        document.documentElement.scrollTop = 0; // Chrome, Firefox, IE y Opera
         this.setState({
             id: this.props.match.params.id
         }, () => {
@@ -212,32 +206,8 @@ class PLocalidad extends Component {
                         <div className="container mb-5">
                             <div className="row">
                                 <div className="col">
-                                    Oficina de Turismo o Municipio
-                                </div>
-                            </div>
-                        </div>
-                        <div className="container mb-5">
-                            <div className="row">
-                                <div className="col">
-                                    <p>Información útil (estaciones de servicio, números de emergencia, etc).</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="container mb-5">
-                            <div className="row">
-                                <div className="col">
-                                    <p>Próximos eventos a darse en la localidad.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="container mb-5">
-                            <div className="row">
-                                <div className="col-12">
                                     <h4>Alojamientos</h4>
-                                    <Alojamientos idLocalidad={this.state.dataLocalidad.id} />
-                                </div>
-                                <div className="col-12">
-                                    <h4>Gastronomía</h4>
+                                    <Alojamientos idLocalidad={this.state.dataLocalidad.id} data={[]} />
                                 </div>
                             </div>
                         </div>
@@ -247,9 +217,6 @@ class PLocalidad extends Component {
         );
     }
 }
-
-//<LocAlojamiento id={this.props.match.params.id} />
-//googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places"
 
 PLocalidad.contextType = Consumer;
 

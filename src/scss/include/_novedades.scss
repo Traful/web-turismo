@@ -64,6 +64,13 @@
         color: #fff;
         .img-fluid {
             border: 2px solid #fff;
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+        }
+        i {
+            font-size: 2rem;
+            color: #fff;
         }
     }
 }
@@ -98,6 +105,13 @@
         }
         .novedades-body {
             margin-left: 0px;
+            text-align: center;
+            .img-fluid {
+                border: 2px solid #fff;
+                width: auto;
+                height: auto;
+                object-fit: cover;
+            }
         }
     }
 }

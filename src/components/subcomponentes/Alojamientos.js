@@ -1,10 +1,11 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import { Consumer } from "../../context";
 import axios from "axios";
 import Viewer from "./Viewer";
 
 /*
-    Ej de uso: <Alojamientos idLocalidad="0" />
+    Ej de uso: <Alojamientos idLocalidad="0" data={array} />
 */
 
 class Alojamientos extends Component {
@@ -13,9 +14,26 @@ class Alojamientos extends Component {
         this.state = {
             loading: true,
             idLocalidad: 0,
-            alojamientos: []
+            data: [],
+            alojamientos: [],
+            visibles: 4
         };
         this.setData = this.setData.bind(this);
+        this.calculoVisibles = this.calculoVisibles.bind(this);
+    }
+
+    calculoVisibles() {
+        var w = window.innerWidth;
+        //console.log(w);
+        if(w > 1200) {
+            this.setState({visibles: 4});
+        } else if(w <= 1200 && w >= 1024) {
+            this.setState({visibles: 3});
+        } else if(w <= 1024 && w >= 768) {
+            this.setState({visibles: 2});
+        } else {
+            this.setState({visibles: 1});
+        }
     }
 
     setData() {
@@ -24,32 +42,40 @@ class Alojamientos extends Component {
         this.setState({
             loading: true
         }, () => {
-            axios({
-                method: "get",
-                headers: {
-                    "Authorization": token
-                },
-                url: `${process.env.REACT_APP_API}/guias/ciudad/${self.state.idLocalidad}/full`,
-                responseType: 'json'
-            })
-            .then((response) => {
+            if(parseInt(self.state.idLocalidad) === 0) {
                 self.setState({
-                    alojamientos: response.data.data.registros,
+                    alojamientos: self.state.data,
                     loading: false
-                }, () => {
-                    console.log(self.state.alojamientos);
                 });
-            })
-            .catch((error) => {
-                console.log(error);
-            });
+            } else {
+                axios({
+                    method: "get",
+                    headers: {
+                        "Authorization": token
+                    },
+                    url: `${process.env.REACT_APP_API}/guias/ciudad/${self.state.idLocalidad}/full`,
+                    responseType: 'json'
+                })
+                .then((response) => {
+                    self.setState({
+                        alojamientos: response.data.data.registros,
+                        loading: false
+                    });
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+            }
+            
         });
     }
 
     componentDidUpdate(prevProps) {
-        if(this.props.idLocalidad !== prevProps.idLocalidad) {
+        if(this.props.idLocalidad !== prevProps.idLocalidad || this.props.data !== prevProps.data) {
             this.setState({
-                idLocalidad: this.props.idLocalidad
+                loading: true,
+                idLocalidad: this.props.idLocalidad,
+                data: this.props.data
             }, () => {
                 this.setData();
             });
@@ -58,21 +84,21 @@ class Alojamientos extends Component {
 
     componentDidMount() {
         this.setState({
-            idLocalidad: this.props.idLocalidad
+            idLocalidad: this.props.idLocalidad,
+            data: this.props.data
         }, () => {
             this.setData();
         });
+        window.addEventListener("resize", this.calculoVisibles);
+        this.calculoVisibles();
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener("resize", this.calculoVisibles);
     }
 
     render() {
         const loading = this.state.loading;
-        var treinta = [];
-        for(let i=1; i < 31; i++) {
-            treinta.push(i);
-        }
-        const servicios = treinta.map((nro) => {
-            return(<li key={`li-${nro}`}><input type="checkbox" name="vehicle1" value="Bike" /> Sin electricidad</li>);
-        });
         const alojamientos = this.state.alojamientos.map((alo) => {
             let foto = "default.jpg";
             if(alo.fotos.length > 0) {
@@ -88,7 +114,16 @@ class Alojamientos extends Component {
                     </div>
                     <div className="details">
                         <div className="content">
-                            Aloha
+                            <div className="nombre">{alo.nombre}</div>
+                            <ul className="detalles">
+                                <li>{alo.tipo}</li>
+                                <li><p><a href={`mailto:${alo.mail}?Subject=Consulta`}>{alo.mail}</a></p></li>
+                                <li><p><a href={`tel:+549${alo.caracteristica}${alo.telefono}`}>+54 9 {alo.caracteristica} - {alo.telefono}</a></p></li>
+                                <li><p><a href={`http://${alo.web}`} target="_blank" rel="noopener noreferrer">{alo.web}</a></p></li>
+                            </ul>
+                            <div className="vermas">
+                                <Link to={`/alojamiento/${alo.id}`}><i className="fas fa-book-open"></i></Link>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -100,9 +135,15 @@ class Alojamientos extends Component {
                     loading ?
                     <div>Cargando...</div>
                     :
-                    <Viewer visibles="4">
-                        {alojamientos}
-                    </Viewer>
+                    <div className="container">
+                        <div className="row">
+                            <div className="col">
+                                <Viewer visibles={this.state.visibles}>
+                                    {alojamientos}
+                                </Viewer>
+                            </div>
+                        </div>
+                    </div>
                 }
                 <style jsx="true">{`
                 `}</style>

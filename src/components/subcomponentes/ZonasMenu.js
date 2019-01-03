@@ -74,7 +74,7 @@ const ZonaMenuTres = (props) => {
                     <ul>
                         <li><Link to="/" className="link" onClick={props.onZonaClick}>Aeropuertos</Link></li>
                         <li><Link to="/" className="link" onClick={props.onZonaClick}>Agencias de Viaje</Link></li>
-                        <li><Link to="/" className="link" onClick={props.onZonaClick}>Alojamientos</Link></li>
+                        <li><Link to="/filtroalojamiento" className="link" onClick={props.onZonaClick}>Alojamientos</Link></li>
                         <li><Link to="/" className="link" onClick={props.onZonaClick}>Alquileres de autos</Link></li>
                         <li><Link to="/" className="link" onClick={props.onZonaClick}>Atractivos turísticos</Link></li>
                         <li><Link to="/" className="link" onClick={props.onZonaClick}>Aplicación para el celular</Link></li>

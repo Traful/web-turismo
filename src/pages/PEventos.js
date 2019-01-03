@@ -1,23 +1,7 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import { Consumer } from "../context";
-import Viewer from "../components/subcomponentes/Viewer";
-/*
 import axios from "axios";
-import GoogleMap from "../components/subcomponentes/GoogleMap";
-*/
-
-const City = (props) => {
-	let estilo = {
-		backgroundImage: `url(http://localhost/api-turismo/public/recursos/novedades/${props.data.foto_uno})`,
-		backgroundRepeat: "no-repeat",
-		backgroundSize: "cover"
-	};
-	return(
-		<div className="City animated zoomIn" style={estilo}>
-			<p>#{props.data.id} - {props.data.titulo}</p>
-		</div>
-	);
-}
 
 class PEventos extends Component {
     constructor(props) {
@@ -31,42 +15,98 @@ class PEventos extends Component {
     }
 
 	getData() {
-		fetch("http://localhost/api-turismo/public/novedades/10", {
-		//fetch("http://localhost/api-turismo/public/ciudades", {
-            method: "GET",
+        var token = this.context.token;
+        var self = this;
+        axios({
+            method: "get",
             headers: {
-                "Authorization": "",
-            }
+                "Authorization": token
+            },
+            url: `${process.env.REACT_APP_API}/eventos/12`,
+            responseType: 'json'
         })
-        .then(res => res.json())
-        .then((result) => {
-            if(!result.err) {
-				this.setState({
-					data: result.data.registros,
+        .then((response) => {
+            if(response.data.data.count > 0) {
+                let activo = false;
+                let carousel = response.data.data.registros.map((a, index) => {
+                    if(a.imagen === "default.jpg") {
+                        return null;
+                    }
+                    let estilo = {
+                        backgroundImage: `url(${process.env.REACT_APP_API_RECURSOS}/recursos/eventos/${a.foto_uno})`,
+                        backgroundSize: "cover",
+                        backgroundPosition: "center",
+                        backgroundRepeat: "no-repeat"
+                    };
+                    if(!activo) {
+                        activo = true;
+                        return (
+                            <div key={`caro-${index}`} className="carousel-item active" style={estilo}>
+                                <h5 className="pd-top">{a.titulo}</h5>
+                            </div>
+                        );
+                    } else {
+                        return (
+                            <div key={`caro-${index}`} className="carousel-item" style={estilo}>
+                                <h5 className="pd-top">{a.titulo}</h5>
+                            </div>
+                        );
+                    }
+                });
+                self.setState({
+                    data: response.data.data.registros,
+                    carousel: carousel,
 					loading: false
 				});
             } else {
-				console.log(result.errMsg);
+                //No hay registros o el id no es correcto
             }
-        }, (error) => { //???
+        })
+        .catch((error) => {
             console.log(error);
         });
 	}
 
 	componentDidMount() {
+        document.body.scrollTop = 0; // Safari
+        document.documentElement.scrollTop = 0; // Chrome, Firefox, IE y Opera
 		this.getData();
 	}
 
 
     render() {
         const carousel = this.state.carousel;
-		const items = this.state.data.map((d) => {
-			return(
-				<div key={`d-${d.id}`}>
-					<City data={d} />
-				</div>
-			);
-		});
+        const items = this.state.data.map((e) => {
+            let estilo = {
+                backgroundImage: `url(${process.env.REACT_APP_API_RECURSOS}/recursos/eventos/${e.foto_uno})`,
+                backgroundPosition: "center",
+                backgroundRepeat: "no-repeat",
+                backgroundSize: "cover"
+            };
+            let dfecha = e.dfecha.split("-");
+            let hfecha = e.hfecha.split("-");
+            dfecha = `${dfecha[2]}/${dfecha[1]}`;
+            hfecha = `${hfecha[2]}/${hfecha[1]}`;
+            //let numero = Math.floor(Math.random() * (4 - 1 + 1)) + 1; //Color random
+            return(
+                <div key={`evento-${e.id}`} className="col-lg-4 col-md-6">
+                    <div className="single-card">
+                        <div className="card-bg" style={estilo}></div>
+                        <div className="card-content">
+                            <h2>{e.titulo}</h2>
+                            { /* <h3 className={`bgc_${numero}`}>{dfecha} al {hfecha} - {e.localidad}</h3> */ }
+                            <h3 style={{background: "#" + e.color}}>{dfecha} al {hfecha} - {e.localidad}</h3>
+                        </div>
+                        <div className="overlay" style={{background: "#" + e.color}}>
+                            <h3>{e.titulo}</h3>
+                            <h2>{e.lugar}</h2>
+                            <h4>Costo: $ {e.costo}</h4>
+                            <Link to={`/evento/${e.id}`} className="eve-link">ver mas <i className="fa fa-chevron-right"></i></Link>
+                        </div>
+                    </div>
+                </div>
+            );
+        });
         return (
             <div className="PEventos">
                 {
@@ -92,20 +132,10 @@ class PEventos extends Component {
                                 </div>
                             </div>
                         </div>
-
-
-
-
-                        <div className="container">
+                        <div className="container mb-5">
                             <div className="row">
-                                <div className="col-lg-4">
-                                    Calendario Picker
-                                </div>
+                                {items}
                             </div>
-
-                            <Viewer visibles="3">
-								{items}
-							</Viewer>
                         </div>
                     </React.Fragment>
                 }

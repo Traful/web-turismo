@@ -26,6 +26,8 @@
 @import "include/eventoform";
 //Componente PEventos.js
 @import "include/eventos";
+//Componente PEvento.js
+@import "include/evento";
 //Componente PNovedad.js
 @import "include/novedad";
 //Componente Novedades.js
@@ -36,14 +38,14 @@
 @import "include/zonadetalles";
 //Componente PLocalidad.js
 @import "include/localidaddetalles";
-//Componente LocAlojamiento.js
-@import "include/localojamiento";
 //Componente PAtractivo.js
 @import "include/atractivo";
 //Componente PListadoAtractivos
 @import "include/listadoatractivos";
 //Componente Alojamientos
 @import "include/alojamientos";
+//Componente PAlojamiento
+@import "include/alojamiento";
 
 //Componente Footer.js
 @import "include/footer";

@@ -13,6 +13,8 @@ class Home extends Component {
     }
 
     componentDidMount() {
+        document.body.scrollTop = 0; // Safari
+        document.documentElement.scrollTop = 0; // Chrome, Firefox, IE y Opera
         this.setState({loading: false});
     }
 

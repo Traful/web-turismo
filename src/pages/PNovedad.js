@@ -48,6 +48,8 @@ class PNovedad extends Component {
     }
 
     componentDidMount() {
+        document.body.scrollTop = 0; // Safari
+        document.documentElement.scrollTop = 0; // Chrome, Firefox, IE y Opera
         let id = parseInt(this.props.match.params.id, 10);
         var token = this.context.token;
         var self = this;
